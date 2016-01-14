@@ -1,0 +1,190 @@
+/* Allocate a block of size size and return a pointer to it. */
+void* mm_malloc (size_t size) {
+  size_t reqSize;
+  BlockInfo * ptrFreeBlock = NULL;
+  size_t blockSize;
+  size_t precedingBlockUseTag;
+
+  // Zero-size requests get NULL.
+  if (size == 0) {
+    return NULL;
+  }
+  // Add one word for the initial size header.
+  // Note that we don't need to boundary tag when the block is used!
+  size += WORD_SIZE;
+  if (size <= MIN_BLOCK_SIZE) {
+    // Make sure we allocate enough space for a blockInfo in case we
+    // free this block (when we free this block, we'll need to use the
+    // next pointer, the prev pointer, and the boundary tag).
+    reqSize = MIN_BLOCK_SIZE;
+  } else {
+    // Round up for correct alignment
+    reqSize = ALIGNMENT * ((size + ALIGNMENT - 1) / ALIGNMENT);
+  }
+    // First find the appropriate free list, if not, creat more space for it
+    // Then make the pointer points the beginning of this list
+  ptrFreeBlock = searchFreeList(reqSize);
+  if (!ptrFreeBlock) {
+    requestMoreSpace(reqSize);
+    ptrFreeBlock = searchFreeList(reqSize);
+  }
+  blockSize = SIZE(ptrFreeBlock->sizeAndTags);
+  if (blockSize - reqSize < MIN_BLOCK_SIZE) {
+    reqSize = blockSize;
+  }
+  precedingBlockUseTag = ptrFreeBlock->sizeAndTags & TAG_PRECEDING_USED;
+  ptrFreeBlock->sizeAndTags = reqSize | precedingBlockUseTag | TAG_USED;
+  BlockInfo * ptrNextBlock;
+  size_t * ptrNextBlockBoundaryTag;
+  BlockInfo * ptrNextFreeBlock;
+  removeFreeBlock(ptrFreeBlock);
+  if (blockSize - reqSize >= MIN_BLOCK_SIZE) {
+    ptrNextBlock = (BlockInfo *)UNSCALED_POINTER_ADD(ptrFreeBlock,reqSize);
+    ptrNextBlock->sizeAndTags = (blockSize-reqSize) | TAG_PRECEDING_USED;
+    ptrNextFreeBlock = (BlockInfo  *)UNSCALED_POINTER_ADD(ptrFreeBlock,blockSize);
+    ptrNextBlockBoundaryTag = (size_t *)UNSCALED_POINTER_SUB(ptrNextFreeBlock,WORD_SIZE);
+    (*ptrNextBlockBoundaryTag) = ptrNextBlock->sizeAndTags;
+    insertFreeBlock(ptrNextBlock);
+  } else {
+    ptrNextBlock = (BlockInfo *)UNSCALED_POINTER_ADD(ptrFreeBlock,reqSize);
+    ptrNextBlock->sizeAndTags = ptrNextBlock->sizeAndTags | TAG_PRECEDING_USED;
+  }
+  return (void*)UNSCALED_POINTER_ADD(ptrFreeBlock,WORD_SIZE); 
+}
+
+/* Free the block referenced by ptr. */
+void mm_free (void *ptr) {
+  size_t payloadSize;
+  BlockInfo * blockInfo;
+  BlockInfo * followingBlock;
+  blockInfo = UNSCALED_POINTER_SUB(ptr,WORD_SIZE);
+  blockInfo->sizeAndTags = blockInfo->sizeAndTags | (~TAG_USED);
+  followingBlock = UNSCALED_POINTER_ADD(ptr,SIZE(blockInfo->sizeAndTags));
+  followingBlock->sizeAndTags = followingBlock->sizeAndTags | (~TAG_PRECEDING_USED);
+  if((followingBlock->sizeAndTags & TAG_USED) == 0){
+    *(size_t *)UNSCALED_POINTER_ADD(followingBlock,SIZE(followingBlock->sizeAndTags)-WORD_SIZE) = followingBlock->sizeAndTags;
+  }
+  payloadSize = SIZE(blockInfo->sizeAndTags) - WORD_SIZE;
+  *(size_t *)UNSCALED_POINTER_ADD(blockInfo,payloadSize) = blockInfo->sizeAndTags;
+  removeFreeBlock(blockInfo);
+  coalesceFreeBlock(FREE_LIST_HEAD);
+}
+
+
+
+
+
+
+
+
+
+/* Free the block referenced by ptr. */
+void mm_free (void *ptr) {
+  size_t payloadSize;
+  BlockInfo * blockInfo;
+  BlockInfo * followingBlock;
+  blockInfo = (BlockInfo*)UNSCALED_POINTER_SUB(ptr,WORD_SIZE);
+  blockInfo->sizeAndTags = blockInfo->sizeAndTags & ~TAG_USED;
+  payloadSize = SIZE(blockInfo->sizeAndTags) - WORD_SIZE;
+  *((size_t*)UNSCALED_POINTER_ADD(blockInfo,payloadSize))=blockInfo->sizeAndTags;
+  followingBlock=(BlockInfo*)UNSCALED_POINTER_ADD(blockInfo,SIZE(blockInfo->sizeAndTags));
+  followingBlock->sizeAndTags=followingBlock->sizeAndTags & ~TAG_PRECEDING_USED;
+  if((followingBlock->sizeAndTags&TAG_USED)==0){ 
+    *((size_t*)UNSCALED_POINTER_ADD(followingBlock,(SIZE(followingBlock->sizeAndTags)-WORD_SIZE)))=followingBlock->sizeAndTags;
+  }
+  insertFreeBlock(blockInfo);
+  coalesceFreeBlock(FREE_LIST_HEAD);
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Allocate a block of size size and return a pointer to it. */
+// If the block size is big enough for splitting, it will split
+// the allocated block into two parts, and free the second part
+// of the block to increase the space utilization
+void* mm_malloc (size_t size) {
+  size_t reqSize;
+  BlockInfo * ptrFreeBlock = NULL;
+  size_t blockSize;
+  size_t precedingBlockUseTag;
+
+  // Zero-size requests get NULL.
+  if (size == 0) {
+    return NULL;
+  }
+  // Add one word for the initial size header.
+  // Note that we don't need to boundary tag when the block is used!
+  size += WORD_SIZE;
+  if (size <= MIN_BLOCK_SIZE) {
+    // Make sure we allocate enough space for a blockInfo in case we
+    // free this block (when we free this block, we'll need to use the
+    // next pointer, the prev pointer, and the boundary tag).
+    reqSize = MIN_BLOCK_SIZE;
+  } else {
+    // Round up for correct alignment
+    reqSize = ALIGNMENT * ((size + ALIGNMENT - 1) / ALIGNMENT);
+  }
+  ptrFreeBlock = searchFreeList(reqSize);
+  // if the program can not find appropriate space, it will expand
+  // the heap, and then allocate the block
+  if(!ptrFreeBlock) {
+    requestMoreSpace(reqSize);
+    ptrFreeBlock = searchFreeList(reqSize);
+  }
+  blockSize = SIZE(ptrFreeBlock->sizeAndTags);
+  if(blockSize-reqSize<MIN_BLOCK_SIZE){
+    reqSize = blockSize;
+  }
+  precedingBlockUseTag = ptrFreeBlock->sizeAndTags & TAG_PRECEDING_USED;
+  ptrFreeBlock->sizeAndTags = ((reqSize|TAG_USED)|precedingBlockUseTag);
+  BlockInfo* ptrNextBlock;
+  // the first case is to split the block, reset the tags
+  if(blockSize-reqSize>=MIN_BLOCK_SIZE){
+    ptrNextBlock = (BlockInfo*) UNSCALED_POINTER_ADD(ptrFreeBlock,reqSize);
+    ptrNextBlock->sizeAndTags = (blockSize-reqSize)|TAG_PRECEDING_USED;
+    BlockInfo * nextFreeBlock = (BlockInfo*)UNSCALED_POINTER_ADD(ptrFreeBlock,blockSize);
+    size_t * footer = UNSCALED_POINTER_SUB(nextFreeBlock,WORD_SIZE);
+    *footer = ptrNextBlock->sizeAndTags;
+    insertFreeBlock(ptrNextBlock);
+    // the second case is not splitting the block.
+  }else{
+    ptrNextBlock = (BlockInfo*)UNSCALED_POINTER_ADD(ptrFreeBlock,blockSize);
+    ptrNextBlock->sizeAndTags = ptrNextBlock->sizeAndTags|TAG_PRECEDING_USED;
+  }
+  removeFreeBlock(ptrFreeBlock);
+  return (void*)UNSCALED_POINTER_ADD(ptrFreeBlock,WORD_SIZE);
+}
+
+/* Free the block referenced by ptr. */
+// free the allocated block, reset the tags and the following block's tags
+void mm_free (void *ptr) {
+  size_t payloadSize;
+  BlockInfo * blockInfo;
+  BlockInfo * followingBlock;
+  blockInfo = (BlockInfo*)UNSCALED_POINTER_SUB(ptr,WORD_SIZE);
+  blockInfo->sizeAndTags = blockInfo->sizeAndTags & (~TAG_USED);
+  followingBlock =(BlockInfo*) UNSCALED_POINTER_ADD(blockInfo,SIZE(blockInfo->sizeAndTags));
+  followingBlock->sizeAndTags = followingBlock->sizeAndTags & (~TAG_PRECEDING_USED);
+  // set the footer if the the following block is free
+  if((followingBlock->sizeAndTags & TAG_USED) == 0){
+    *(size_t *)UNSCALED_POINTER_ADD(followingBlock,SIZE(followingBlock->sizeAndTags)-WORD_SIZE) = followingBlock->sizeAndTags;
+  }
+  // set the footer of current block 
+  payloadSize = SIZE(blockInfo->sizeAndTags) - WORD_SIZE;
+  *(size_t *)UNSCALED_POINTER_ADD(blockInfo,payloadSize) = blockInfo->sizeAndTags;
+  insertFreeBlock(blockInfo);
+  coalesceFreeBlock(FREE_LIST_HEAD);
+}
