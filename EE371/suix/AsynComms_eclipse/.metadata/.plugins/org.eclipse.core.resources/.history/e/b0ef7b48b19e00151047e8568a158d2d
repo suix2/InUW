@@ -1,0 +1,32 @@
+/*
+ * play.c
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ *
+ */
+int play(){
+	// pattern code
+	int pattern=0; //sync
+	// current card played, no need to init
+	char ccp[20];
+	// number of cards played
+	char numPlayed=0;
+	// key value of card played
+	char key=CUTOFF; //sync
+	//input to ccp, check num here
+	//sort(numPlayed, ccp);
+	//checkPattern
+	//isGreater
+	//haveWinner
+	return 0;
+}
+
+Boolean haveWinner(){
+	return TRUE;
+}

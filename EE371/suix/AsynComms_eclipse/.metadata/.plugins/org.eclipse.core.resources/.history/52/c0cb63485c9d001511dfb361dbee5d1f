@@ -1,0 +1,93 @@
+/*
+ * - Use ALT versions of stdio routines:
+ *
+ *           Function                  Description
+ *        ===============  =====================================
+ *        alt_printf       Only supports %s, %x, and %c ( < 1 Kbyte)
+ *        alt_putstr       Smaller overhead than puts with direct drivers
+ *                         Note this function doesn't add a newline.
+ *        alt_putchar      Smaller overhead than putchar with direct drivers
+ *        alt_getchar      Smaller overhead than getchar with direct drivers
+ *
+ */
+#include "comsheader.h"
+
+//#define SMOKE_SEND
+#define SMOKE_RECV
+//#define SRAMTEST
+
+// global vars
+char myNum;
+char* cch;
+char PCS;
+char multiplier;
+
+int main()
+{
+	char cardsInHand[20];
+	myNum=0;
+	PCS=1;
+	cch=cardsInHand;
+	multiplier=0;
+	int i;
+
+	alt_putstr("Fight The Landlord!\n");
+	alt_putstr("Please input your number\n");
+	alt_putstr("It should be 1, 2, or 3 and unique\n");
+	// do not deal with repeat number so far
+
+/******************************/
+	// smoke test
+#ifdef SMOKE_RECV
+	int buf;
+	printf("recver\n");
+//	recvstr(64, buf);
+	while(1){
+		recvchar(&buf);
+		printf("%d ", buf);
+	}
+//	recvchar(buf);
+//	alt_printf("%x ", *buf);
+#endif
+#ifdef SMOKE_SEND
+	int j, k;
+	printf("sender\n");
+	for(k=0; k<128; k++){
+		for(j=0; j<128; j++){
+			sendchar(j);
+			usleep(100);
+		}
+	}
+#endif
+
+#ifdef SRAMTEST
+//	sramwrite(CHNP, 1);
+//	usleep(100);
+//	sramwrite(CHNP+1, 2);
+//	usleep(100);
+//	sramwrite(CHNP+2, 3);
+//	usleep(100);
+//	printf("%d", sramread(CHNP));
+//	printf("%d", sramread(CHNP+1));
+//	printf("%d", sramread(CHNP+2));
+	for(i=0; i<128; i++){
+		sramwrite(i, 127-i);
+	}
+	for(i=0; i<128; i++){
+		printf("%d ", sramread(i));
+	}
+#endif
+/******************************/
+
+	while(myNum!=1 && myNum!=2 && myNum!=3){
+		myNum=(char)getchar()-'0';
+		printf("OK, you num is: %d\n", myNum);
+	}
+	while (1){
+		shuffle();
+		landlord();
+		//play();
+	}
+
+	return 0;
+}

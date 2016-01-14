@@ -1,0 +1,142 @@
+/*
+ * landlord.c
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ * pick the landlord
+ * Inputs: NONE
+ * Return: int
+ */
+int landlord(){
+	int i;
+	int choice;
+	int opcode;
+	while(!isCurrentPlayer()){
+		recvchar(&opcode);
+		usleep(70);
+		alt_printf("opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 5:
+				if(PCS==1){
+					firstchoice=1;
+				} else if(PCS==2){
+					secondchoice=1;
+				} else {
+					thirdchoice=1;
+				}
+				break;
+		case 6:
+				if(PCS==1){
+					firstchoice=2;
+				} else if(PCS==2){
+					secondchoice=2;
+				} else {
+					thirdchoice=2;
+				}
+				break;
+		case 7:
+				if(PCS==1){
+					firstchoice=3;
+				} else if(PCS==2){
+					secondchoice=3;
+				} else {
+					thirdchoice=3;
+				}
+				break;
+		}
+	}
+	alt_printf("Out of while 1\n");
+	alt_printf("Pick a score from 1, 2 or 3. The score you choose will determine who will be landlord and multiplier\n");
+	alt_printf("Make your choice #%d player!",PCS);
+	scanf (" %d",&choice);
+	printf("your choice is %d\n",choice);
+	if(choice==1) {
+		sendchar(5|0x40);
+		usleep(250);
+		if(PCS==1){
+			firstchoice=1;
+		} else if(PCS==2){
+			secondchoice=1;
+		} else {
+			thirdchoice=1;
+		}
+	} else if (choice ==2) {
+		sendchar(6|0x40);
+		usleep(250);
+		if(PCS==1){
+			firstchoice=2;
+		} else if(PCS==2){
+			secondchoice=2;
+		} else {
+			thirdchoice=2;
+		}
+	} else if(choice == 3) {
+		sendchar(7|0x40);
+		usleep(250);
+		if(PCS==1){
+			firstchoice=3;
+		} else if(PCS==2){
+			secondchoice=3;
+		} else {
+			thirdchoice=3;
+		}
+	}
+	usleep(250);
+	nextPlayer();
+	usleep(250);
+	incPCS();
+	while(PCS!=1){
+		recvchar(&opcode);
+		usleep(70);
+		alt_printf("opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 5:
+				if(PCS==1){
+					firstchoice==1;
+				} else if(PCS==2){
+					secondchoice==1;
+				} else {
+					thirdchoice==1;
+				}
+				break;
+		case 6:
+				if(PCS==1){
+					firstchoice==2;
+				} else if(PCS==2){
+					secondchoice==2;
+				} else {
+					thirdchoice==2;
+				}
+				break;
+		case 7:
+				if(PCS==1){
+					firstchoice==3;
+				} else if(PCS==2){
+					secondchoice==3;
+				} else {
+					thirdchoice==3;
+				}
+				break;
+		}
+	}
+	alt_printf("current player: %x\n", PCS);
+	alt_printf("first player chooses %d\n",firstchoice);
+	alt_printf("second player chooses %d\n",secondchoice);
+	alt_printf("third player chooses %d\n",thirdchoice);
+	return 0;
+}
+
+
+
+

@@ -1,0 +1,90 @@
+/*
+ * comsheader.h
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#ifndef COMSHEADER_H_
+#define COMSHEADER_H_
+
+#include <stdio.h>
+#include "sys/alt_stdio.h"
+#include "altera_avalon_pio_regs.h"
+
+// HW addrs
+#define load (volatile char *) 0x00021010
+#define sent (volatile char *) 0x00021020
+#define asoe (volatile char *) 0x00021030
+#define mpdataout (volatile char *) 0x00021040
+#define chrec (volatile char *) 0x00021050
+#define mpdatain (volatile char *) 0x00021060
+#define noe (volatile char *) 0x00021070
+#define rnw (volatile char *) 0x00021080
+#define address (volatile char *) 0x00021090
+//data in/out of SRAM
+#define data (volatile char *) 0x000210a0
+#define led (volatile char *) 0x000210b0
+
+// SRAM addrs
+// cards for shuffle base pointer, 0-53
+#define CFSP 0
+// number of cards in hands base pointer, 54-56
+#define CHNP 54
+#define BLACK_JOCKER 13
+#define RED_JOCKER 14
+
+
+#define CUTOFF 15
+
+typedef enum{FALSE, TRUE} Boolean;
+
+// global vars
+extern char myNum;
+// current cards in hand
+extern char* cch;
+// player control status
+// format 00 00 xx xx
+// first 2 bits for landlord number
+// last 2 bits for current player
+extern char PCS;
+// score multiplier
+extern char multiplier;
+
+// Functions
+int read(char addr);
+int write(char addr, char buf);
+int sendchar(char buf);
+int sendstr(int bufc, char* bufv);
+int recvchar(char* buf);
+int recvstr(int bufc, char* bufv);
+char addparity(char c);
+unsigned int rand(void);
+int shuffle(void);
+int landlord(void);
+int play(void);
+Boolean isCurrentPlayer(void);
+int nextPlayer(void);
+int incPCS(void);
+int resetPCS(void);
+int waitNextPlayer(void);
+int initCurrentPlayer(void);
+int deleteSRAM(unsigned char addr);
+int syncDeleteSRAM(unsigned char addr);
+int deleteRecv(void);
+int swap(char addr1, char addr2);
+int incCardNum(void);
+int decCardNum(void);
+int syncCardNum(void);
+int getCardNum(void);
+int getCard(int index);
+int initSRAM(void);
+Boolean checkPattern(int* pattern, char* ccp, char num,
+		char* keyValue, char* analyzer);
+int detectPattern(char* ccp, char num,	char* key, char* ana);
+Boolean isGreater(void);
+Boolean haveWinner(void);
+void initAnalyzer(char* analyzer);
+int sort(char cn, char* ap);
+
+#endif /* COMSHEADER_H_ */

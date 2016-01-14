@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 7",
+		"os_version" : "6.2"
+	},
+	"error" : {
+		"error_message" : "Access Violation at 0X0000000061ACF0AB",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t 0x61acf0aa: (?cast@QMetaObject@@QEBAPEAVQObject@@PEAV2@@Z + 0x1a)\n\t 0x5ebc731a: (?eventFilter@QMdiArea@@MEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x6a)\n\t 0x61aca86d: (?sendThroughApplicationEventFilters@QCoreApplicationPrivate@@QEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x8d)\n\t 0x5e84281d: (?notify_helper@QApplicationPrivate@@QEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x1d)\n\t 0x5e845297: (?notify@QApplication@@UEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x17f7)\n\t 0x61aca7c1: (?notifyInternal@QCoreApplication@@AEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x71)\n\t 0x5e84219f: (?enterModal@QApplicationPrivate@@SAXPEAVQWidget@@@Z + 0x2bf)\n\t 0x5e88d736: (?show_helper@QWidgetPrivate@@QEAAXXZ + 0x226)\n\t 0x5e88de3b: (?setVisible@QWidget@@UEAAX_N@Z + 0x30b)\n\t 0x5ec424fd: (?setVisible@QDialog@@UEAAX_N@Z + 0xcd)\n\t0x7ffed54bd018: (?selectedFiles@AFCQ_NATIVE_FILE_DLG@@QEBA?AVQStringList@@XZ + 0x15c8)\n\t0x7ffed54bd5ef: (?selectedFiles@AFCQ_NATIVE_FILE_DLG@@QEBA?AVQStringList@@XZ + 0x1b9f)\n\t0x7ffed52c04ed: (?open_file_do_modal@QUI_FRAME_WND@@UEAAXAEBVQString@@@Z + 0xebd)\n\t0x7ffed52b3675: (?on_open_action@QUI_FRAME_WND@@MEAAXXZ + 0x35)\n\t 0x61adeb5a: (?activate@QMetaObject@@SAXPEAVQObject@@PEBU1@HPEAPEAX@Z + 0x53a)\n\t 0x5e82dd2f: (?activate@QAction@@QEAAXW4ActionEvent@1@@Z + 0xdf)\n\t 0x5ebd3447: (?findIdForAction@QMenu@@AEBAHPEAVQAction@@@Z + 0x327)\n\t 0x5ebd9c21: (?internalDelayedPopup@QMenu@@AEAAXXZ + 0x8c1)\n\t 0x5e88a164: (?event@QWidget@@MEAA_NPEAVQEvent@@@Z + 0xd4)\n\t 0x5ebd9fb2: (?event@QMenu@@MEAA_NPEAVQEvent@@@Z + 0x2a2)\n\t 0x5e8428f5: (?notify_helper@QApplicationPrivate@@QEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0xf5)\n\t 0x5e8441ab: (?notify@QApplication@@UEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x70b)\n\t 0x61aca7c1: (?notifyInternal@QCoreApplication@@AEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x71)\n\t 0x5e84371c: (?sendMouseEvent@QApplicationPrivate@@SA_NPEAVQWidget@@PEAVQMouseEvent@@00PEAPEAV2@AEAV?$QPointer@VQWidget@@@@_N@Z + 0x1ec)\n\t 0x5e8a12ba: (?winFocus@QApplication@@QEAAXPEAVQWidget@@_N@Z + 0x9da)\n\t 0x5e8a3f4c: (?restoreOverrideCursor@QApplication@@SAXXZ + 0x93c)\n\t0x7ffef17b00db: (DispatchMessageW + 0x68b)\n\t0x7ffef17afc06: (DispatchMessageW + 0x1b6)\n\t 0x61af2f69: (?processEvents@QEventDispatcherWin32@@UEAA_NV?$QFlags@W4ProcessEventsFlag@QEventLoop@@@@@Z + 0x3b9)\n\t 0x5e8a3564: (?translateTouchEvent@QApplicationPrivate@@QEAA_NAEBUtagMSG@@@Z + 0x884)\n\t 0x61ac9cf0: (?exec@QEventLoop@@QEAAHV?$QFlags@W4ProcessEventsFlag@QEventLoop@@@@@Z + 0x230)\n\t 0x61ace5ff: (?exec@QCoreApplication@@SAHXZ + 0xdf)\n\t0x7ff7f08c108e:\n\t0x7ffee74d9678: (?msg_exe_fini@@YAXXZ + 0x58)\n\t0x7ffee74d978c: (?msg_exe_fini@@YAXXZ + 0x16c)\n\t0x7ffee72512c4: (??1MEM_INITIALIZER@@QEAA@XZ + 0x184)\n\t0x7ffee74dabe9: (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0x99)\n\t0x7ff7f08c1ab2:\n\t0x7ff7f08c13de:\n\t0x7ffef2fd2d91: (BaseThreadInitThunk + 0x21)\n\t0x7ffef3339f63: (RtlUserThreadStart + 0x33)\n",
+		"subsystem" : "unknown",
+		"executable" : "quartus",
+		"comment" : "none"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "14.0.0",
+		"build" : "200",
+		"edition" : "Full Version"
+	}
+}

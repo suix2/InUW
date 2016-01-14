@@ -1,0 +1,95 @@
+/*
+ * landlord.c
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ * pick the landlord
+ * Inputs: NONE
+ * Return: int
+ */
+int landlord(){
+	int i;
+	int card;
+	unsigned int addr;
+	int choice;
+	int opcode;
+	initSRAMLL();
+	while(!isCurrentPlayer()){
+		recvchar(&opcode);
+		usleep(70);
+		alt_printf("opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 5:
+				sramwrite(56+PCS,1);
+				break;
+		case 6:
+				sramwrite(56+PCS,2);
+				break;
+		case 7:
+				sramwrite(56+PCS,3);
+				break;
+		}
+	}
+	alt_printf("Out of while 1\n");
+	alt_printf("Pick a score from 1, 2 or 3. The score you choose will determine who will be landlord and multiplier\n");
+	alt_printf("Make your choice #%d player!",PCS);
+	scanf (" %d",&choice);
+	printf("your choice is %d\n",choice);
+	if(choice==1) {
+		sendchar(5|0x40);
+	} else if (choice ==2) {
+		sendchar(6|0x40);
+	} else if(choice == 3) {
+		sendchar(7|0x40);
+	}
+	usleep(250);
+	nextPlayer();
+	usleep(250);
+	incPCS();
+	while(PCS!=1){
+		recvchar(&opcode);
+		usleep(70);
+		alt_printf("opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 5:
+				sramwrite(56+PCS,1);
+				break;
+		case 6:
+				sramwrite(56+PCS,1);
+				break;
+		case 7:
+				sramwrite(56+PCS,1);
+				break;
+		}
+	}
+	alt_printf("current player: %x\n", PCS);
+	alt_printf("my sram at 57 is %d\n",sramread(57));
+	alt_printf("my sram at 58 is %d\n",sramread(58));
+	alt_printf("my sram at 59 is %d\n",sramread(59));
+	return 0;
+}
+
+
+----------------------
+/**
+ * initializes SRAM
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int initSRAMLL(){
+	sramwrite(57, 0);
+	sramwrite(58, 0);
+	sramwrite(59, 0);
+	return 0;
+}

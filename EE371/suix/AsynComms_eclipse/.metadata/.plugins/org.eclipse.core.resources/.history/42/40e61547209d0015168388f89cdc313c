@@ -1,0 +1,191 @@
+/*
+ * "Hello World" example.
+ *
+ * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
+ * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
+ * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
+ * device in your system's hardware.
+ * The memory footprint of this hosted application is ~69 kbytes by default
+ * using the standard reference design.
+ *
+ * For a reduced footprint version of this template, and an explanation of how
+ * to reduce the memory footprint for a given application, see the
+ * "small_hello_world" template.
+ *
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include "altera_avalon_pio_regs.h"
+
+//#define TEST_1
+
+// HW addrs
+#define load (volatile char *) 0x00081010
+#define sent (volatile char *) 0x00081020
+#define asoe (volatile char *) 0x00081030
+#define mpdataout (volatile char *) 0x00081040
+#define chrec (volatile char *) 0x00081050
+#define mpdatain (volatile char *) 0x00081060
+#define noe (volatile char *) 0x00081070
+#define rnw (volatile char *) 0x00081080
+#define address (volatile char *) 0x00081090
+//data in/out of SRAM
+#define data (volatile char *) 0x000810a0
+#define led (volatile char *) 0x000810b0
+
+int sendchar(int buf);
+int recvchar(int* buf);
+char addparity(char c);
+
+int main()
+{
+#ifndef TEST_1
+#define TEST_1
+	char buf=0x55;
+	int rec, j;
+	for(j=0; j<128; j++){
+		//IOWR_ALTERA_AVALON_PIO_DATA(led, 0xaa);
+		sendchar(j);
+		sleep(100);
+//		recvchar(&rec);
+//		printf("rec=%x\n", rec);
+	}
+	while(1);
+#endif
+
+	char ch[63];
+	int guess;
+	int res;
+	int length;
+	int time;
+	int myNum;
+	int i=0;
+	int cont=1;
+	printf("Please tell me if you want to question(0) or play(1)\n");
+	scanf("%d", &myNum);
+	if(myNum==0){
+		printf("Please tell me the length of your word\n");
+		scanf("%d", &length);
+		sendchar(length);
+		printf("Please tell me what is you word\n");
+		scanf("%s", ch);
+		printf("How many chance do you want to give to the player?\n");
+		while(time<length){
+			printf("time should be longer or equal to the length of the word");
+			scanf("%d", &time);
+		}
+		sendchar(time);
+		while(i<length && time >=0){
+			recvchar(&guess);
+			printf("Next!");
+			if(ch[i]==guess){
+				sendchar(1);
+				i++;
+			} else{
+				sendchar(2);
+				time--;
+			}
+		}
+		if(i==length){
+			printf("You Lose!");
+		}
+		else{
+			printf("You Win!");
+		}
+	}
+	else{
+		recvchar(&length);
+		printf("length is: %d\n", length);
+		recvchar(&time);
+		printf("time is: %d\n", time);
+		while(cont>0){
+			printf("Please tell me the next letter you guess\n");
+			scanf(" %c", &guess);
+			printf("the letter you guessed is: %c\n", guess);
+			sendchar(guess);
+			recvchar(&res);
+			switch(res){
+			case 1:
+				i++;
+				printf("Correct!");
+				break;
+			case 2:
+				time--;
+				printf("Nope...Times Remaining: %d\n", time);
+				break;
+			}
+			if(i==length){
+				printf("You Win!");
+				cont=0;
+			}
+			else if(time<0){
+				printf("You Lose!");
+				cont=0;
+			}
+		}
+	}
+	while(1);
+	return 0;
+}
+
+/**
+ * send given char to other boards
+ * Inputs:
+ * 		buf: char being sent out
+ * Return: 0 if success
+ */
+int sendchar(int buf){
+
+	//used for test
+//	*mpdataout=0x4a; //01001010
+//	*mpdataout=0x4b; //01001011
+//	*mpdataout=0xff; //11111111
+//	*mpdataout=0xaa; //10101010
+//	*mpdataout=0x55; //01010101
+
+	IOWR_ALTERA_AVALON_PIO_DATA(mpdataout, buf*2+addparity(buf));
+	IOWR_ALTERA_AVALON_PIO_DATA(load, 1);
+	usleep(10000);
+	IOWR_ALTERA_AVALON_PIO_DATA(load, 0);
+	IOWR_ALTERA_AVALON_PIO_DATA(asoe, 1);
+	while(!IORD_ALTERA_AVALON_PIO_DATA(sent));
+	IOWR_ALTERA_AVALON_PIO_DATA(asoe, 0);
+	//alt_printf("sent: %x\n", buf);
+	return 0;
+}
+
+/**
+ * receive a char from other board and store it to *buf
+ * Inputs:
+ * 		buf: points to where the char received stored
+ * Return: 0 if success
+ *
+ */
+int recvchar(int* buf){
+	//check for correctness not implemented so far
+	while(!IORD_ALTERA_AVALON_PIO_DATA(chrec));
+	*buf=(((int)IORD_ALTERA_AVALON_PIO_DATA(mpdatain))&0xff)/2;
+	if((*buf)&0x40){
+		*buf &= 0x3f;
+		sendchar(*buf);
+	}
+	return 0;
+}
+
+/**
+ * data = data*2+addparity(data);
+ * Adds parity bit for the given char
+ * Inputs:
+ * 		c: char where parity code need to be added
+ * Return: char with parity code added
+ */
+char addparity(char c) {
+	char p = 0;
+	int i;
+	for(i=0;i<7;i++) {
+		p^=c%2;
+		c/=2;
+	}
+	return p;
+}
