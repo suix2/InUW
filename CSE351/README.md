@@ -1,6 +1,4 @@
-<p>
-<strong><font size="10">CSE 351</font></strong>
-</p>
+# CSE 351
 <p>
 This folder contains code in projects (labs) in CSE 351 (Hardware/Software Interface), 15 AU
 </p>
