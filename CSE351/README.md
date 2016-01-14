@@ -5,3 +5,7 @@ This folder contains code in projects (labs) in CSE 351 (Hardware/Software Inter
 <p>
 Please run in Linux using gcc
 </p>
+<br>
+<p>
+For more detailed information, please contact suix2@uw.edu
+</p>
