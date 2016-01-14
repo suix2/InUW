@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>FreeRTOS.org uIP WEB server demo</title>
+  </head>
+  <BODY onLoad="window.setTimeout(&quot;location.href='display.shtml'&quot;,5000)"bgcolor="#CCCCff">
+<font face="arial">
+<a href="index.shtml">RTOS Stats</a> <b>|</b> <a href="stats.shtml">TCP Stats</a> <b>|</b> <a href="tcp.shtml">Connections</a> <b>|</b> <a href="display.shtml">Display</a> <b>|</b> <a href="command.shtml">Command</a> <b>|</b> <a href="io.shtml">IO</a>
+<br><p>
+<hr>
+<br><p>
+<h2>
+Satellite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME<br>
+Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="time"></span><br>
+Operator:			<br>
+</h2>
+
+<script language="javascript">
+var today = new Date();
+document.getElementById('time').innerHTML=today;
+</script>
+
+<table width="300" border="0">
+<tr><td align="left"><font face="courier"><pre>
+Fuel Low:
+Battery Low:
+Solar Panel State:
+Battery Level:
+Fuel Level:
+Power Consumption:
+Battery Temperature 1:
+Battery Temperature 2:
+Transport Distance:
+Image Data:
+</pre></font></td><td><pre>%! communic-out
+</pre></table>
+<br><p>
+</font>
+</body>
+</html>

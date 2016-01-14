@@ -1,0 +1,935 @@
+###############################################################################
+#
+# IAR ELF Linker V7.30.4.8167/W32 for ARM                 21/Aug/2015  15:18:04
+# Copyright 2007-2014 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Exe\RTOSDemo.out
+#    Map file     =  
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\List\RTOSDemo.map
+#    Command line =  
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Common\drivers\LuminaryMicro\IAR\driverlib.a
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\emac.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\formike128x128x16.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Common\drivers\LuminaryMicro\IAR\grlib.a
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\heap_2.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\http-strings.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\httpd-cgi.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\httpd-fs.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\httpd.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\IntQueue.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\IntQueueTimer.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\list.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\main.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\osram128x64x4.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\ParTest.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\port.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\portasm.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\psock.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\queue.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\rand.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\rit128x96x4.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\startup_ewarm.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\tasks.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\timer.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\timertest.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\uip.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\uip_arp.o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\uIP_Task.o
+#        --redirect _Printf=_PrintfSmall --redirect _Scanf=_ScanfSmall -o
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Exe\RTOSDemo.out
+#        --map
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\List\RTOSDemo.map
+#        --config
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\LM3Sxxxx.icf
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\..\Common\drivers\LuminaryMicro\IAR\driverlib.a
+#        C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\..\Common\drivers\LuminaryMicro\IAR\grlib.a
+#        --entry __iar_program_start --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** MESSAGES
+***
+
+Warning[Lt010]: Inconsistent enum container size
+          C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj\ht
+                    tpd-cgi.o and 2 other objects uses smallest possible
+          flash.o(driverlib.a) use word size
+
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A1":  place at start of [0x00000000-0x0003ffff] { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0003ffff] { ro };
+"P2":  place in [from 0x20000000 to 0x2000ffff] { rw, block HEAP };
+
+  Section             Kind        Address    Size  Object
+  -------             ----        -------    ----  ------
+"A1":                                       0x100
+  .intvec             const    0x00000000   0x100  startup_ewarm.o [1]
+                             - 0x00000100   0x100
+
+"P1":                                      0x8a03
+  .rodata             const    0x00000100  0x1ba4  httpd-fs.o [1]
+  .text               ro code  0x00001ca4  0x1a6c  main.o [1]
+  .text               ro code  0x00003710   0x3cc  queue.o [1]
+  .text               ro code  0x00003adc   0x814  tasks.o [1]
+  .text               ro code  0x000042f0    0xb4  timertest.o [1]
+  .text               ro code  0x000043a4   0x2e8  sysctl.o [4]
+  .text               ro code  0x0000468c   0x19c  gpio.o [4]
+  .text               ro code  0x00004828    0x34  sprintf.o [3]
+  .text               ro code  0x0000485c    0xf8  interrupt.o [4]
+  .text               ro code  0x00004954   0x508  rit128x96x4.o [1]
+  .text               ro code  0x00004e5c     0x8  atoi.o [3]
+  .text               ro code  0x00004e64    0x94  adc.o [4]
+  .text               ro code  0x00004ef8    0x98  pwm.o [4]
+  .text               ro code  0x00004f90    0xbc  uart.o [4]
+  .text               ro code  0x0000504c    0x1c  I32ToDbl.o [6]
+  .text               ro code  0x00005068    0xe8  DblAdd.o [6]
+  .text               ro code  0x00005150    0x2e  DblCmpLe.o [6]
+  .text               ro code  0x0000517e    0x22  zero_init3.o [7]
+  .text               ro code  0x000051a0    0x58  DblToI32.o [6]
+  .text               ro code  0x000051f8    0x76  ABImemcpy_unaligned.o [7]
+  .text               ro code  0x0000526e    0x1a  xsnprout.o [3]
+  .text               ro code  0x00005288    0x58  timer.o [4]
+  .text               ro code  0x000052e0    0xd8  heap_2.o [1]
+  .text               ro code  0x000053b8    0x92  list.o [1]
+  .text               ro code  0x0000544a     0xa  xsprout.o [3]
+  .text               ro code  0x00005454    0xa0  port.o [1]
+  CODE                ro code  0x000054f4    0x8c  portasm.o [1]
+  .text               ro code  0x00005580    0x1c  strcat.o [3]
+  .text               ro code  0x0000559c    0x62  memcmp_unaligned.o [7]
+  .text               ro code  0x000055fe     0x6  startup_ewarm.o [1]
+  .text               ro code  0x00005604    0x6c  strncpy_unaligned.o [7]
+  .text               ro code  0x00005670    0x3a  ABImemset48.o [7]
+  .text               ro code  0x000056ac   0x4d8  xprintfsmall.o [3]
+  CODE                ro code  0x00005b84    0x14  cpu.o [4]
+  .text               ro code  0x00005b98    0x88  ssi.o [4]
+  .text               ro code  0x00005c20   0x19c  xstoul.o [3]
+  .text               ro code  0x00005dbc   0x16c  DblSub.o [6]
+  .text               ro code  0x00005f28    0x66  ABImemset.o [7]
+  .text               ro code  0x00005f90    0x16  strchr.o [7]
+  .text               ro code  0x00005fa8    0x36  strlen.o [7]
+  .text               ro code  0x00005fe0    0x58  memchr.o [7]
+  .text               ro code  0x00006038     0xc  errno.o [3]
+  .text               ro code  0x00006044     0x2  xtls.o [3]
+  .text               ro code  0x00006048   0xb30  uip.o [1]
+  .text               ro code  0x00006b78     0x6  ABImemclr4.o [7]
+  .text               ro code  0x00006b80   0x4f0  httpd.o [1]
+  .text               ro code  0x00007070   0x250  psock.o [1]
+  .text               ro code  0x000072c0    0x94  httpd-fs.o [1]
+  .text               ro code  0x00007354   0x540  httpd-cgi.o [1]
+  .text               ro code  0x00007894    0x18  strrchr.o [3]
+  .text               ro code  0x000078ac    0x2a  strncmp.o [3]
+  .text               ro code  0x000078d8    0x44  strcpy_unaligned.o [7]
+  .text               ro code  0x0000791c   0x248  uIP_Task.o [1]
+  .text               ro code  0x00007b64    0x44  snprintf.o [3]
+  .text               ro code  0x00007ba8    0x10  ParTest.o [1]
+  .text               ro code  0x00007bb8    0x32  timer.o [1]
+  .text               ro code  0x00007bec   0x1f4  emac.o [1]
+  .text               ro code  0x00007de0   0x318  uip_arp.o [1]
+  .text               ro code  0x000080f8    0x38  flash.o [4]
+  .text               ro code  0x00008130    0xe4  ethernet.o [4]
+  .text               ro code  0x00008214     0x4  uIP_Task.o [1]
+  .text               ro code  0x00008218     0x6  ABImemclr.o [7]
+  .text               ro code  0x0000821e    0x2c  strstr.o [3]
+  .text               ro code  0x0000824c   0x1ec  IntQueue.o [1]
+  .rodata             const    0x00008438   0x1e8  http-strings.o [1]
+  .rodata             const    0x00008620    0xf4  httpd-cgi.o [1]
+  .rodata             const    0x00008714    0xd4  main.o [1]
+  .text               ro code  0x000087e8    0xd0  packbits_init.o [7]
+  .text               ro code  0x000088b8     0x6  abort.o [3]
+  .text               ro code  0x000088c0     0xc  XXexit.o [7]
+  .rodata             const    0x000088cc    0x5c  sysctl.o [4]
+  .text               ro code  0x00008928    0x44  IntQueueTimer.o [1]
+  .rodata             const    0x0000896c    0x40  interrupt.o [4]
+  .text               ro code  0x000089ac    0x28  data_init.o [7]
+  .iar.init_table     const    0x000089d4    0x2c  - Linker created -
+  .text               ro code  0x00008a00    0x1a  cmain.o [7]
+  .text               ro code  0x00008a1a     0x4  low_level_init.o [3]
+  .text               ro code  0x00008a1e     0x4  exit.o [3]
+  .text               ro code  0x00008a24     0xa  cexit.o [7]
+  .rodata             const    0x00008a30    0x10  sysctl.o [4]
+  .rodata             const    0x00008a40     0xc  sysctl.o [4]
+  .rodata             const    0x00008a4c     0xc  sysctl.o [4]
+  .text               ro code  0x00008a58     0xc  cstartup_M.o [7]
+  .rodata             const    0x00008a64     0x0  zero_init3.o [7]
+  .rodata             const    0x00008a64     0x0  packbits_init.o [7]
+  Initializer bytes   const    0x00008a64    0x9f  <for P2 s0>
+                             - 0x00008b03  0x8a03
+
+"P2":                                      0xb000
+  P2 s0                        0x20000000   0x2f9  <Init block>
+    .data             inited   0x20000000    0xb4  main.o [1]
+    .data             inited   0x200000b4    0xac  tasks.o [1]
+    .data             inited   0x20000160    0xa8  main.o [1]
+    .data             inited   0x20000208    0x54  IntQueue.o [1]
+    .data             inited   0x2000025c    0x34  main.o [1]
+    .data             inited   0x20000290    0x24  httpd-cgi.o [1]
+    .data             inited   0x200002b4    0x20  httpd-cgi.o [1]
+    .data             inited   0x200002d4     0xc  heap_2.o [1]
+    .data             inited   0x200002e0     0x8  main.o [1]
+    .data             inited   0x200002e8     0x4  main.o [1]
+    .data             inited   0x200002ec     0x4  port.o [1]
+    .data             inited   0x200002f0     0x4  tasks.o [1]
+    __DLIB_PERTHREAD  inited   0x200002f4     0x4  errno.o [3]
+    .data             inited   0x200002f8     0x1  main.o [1]
+  .bss                zero     0x20000300  0x5dcc  heap_2.o [1]
+  .bss                zero     0x200060cc  0x1fe0  uip.o [1]
+  .bss                zero     0x200080ac  0x1d10  emac.o [1]
+  .bss                zero     0x20009dbc   0x400  main.o [1]
+  .bss                zero     0x2000a1bc   0x400  main.o [1]
+  .bss                zero     0x2000a5bc   0x190  tasks.o [1]
+  .bss                zero     0x2000a74c    0xc8  IntQueue.o [1]
+  .bss                zero     0x2000a814    0xc8  IntQueue.o [1]
+  .bss                zero     0x2000a8dc    0x68  uip.o [1]
+  .bss                zero     0x2000a944    0x68  uip_arp.o [1]
+  .bss                zero     0x2000a9ac    0x44  main.o [1]
+  .bss                zero     0x2000a9f0    0x40  main.o [1]
+  .bss                zero     0x2000aa30    0x40  main.o [1]
+  .bss                zero     0x2000aa70    0x40  main.o [1]
+  .bss                zero     0x2000aab0    0x3c  uip.o [1]
+  .bss                zero     0x2000aaec    0x34  tasks.o [1]
+  .bss                zero     0x2000ab20    0x2c  emac.o [1]
+  .bss                zero     0x2000ab4c    0x2c  main.o [1]
+  .bss                zero     0x2000ab78    0x24  httpd-cgi.o [1]
+  .bss                zero     0x2000ab9c    0x14  rit128x96x4.o [1]
+  .bss                zero     0x2000abb0    0x10  httpd-fs.o [1]
+  .bss                zero     0x2000abc0     0xc  timertest.o [1]
+  .bss                zero     0x2000abcc     0x8  main.o [1]
+  .bss                zero     0x2000abd4     0x8  rit128x96x4.o [1]
+  .bss                zero     0x2000abdc     0x8  uip.o [1]
+  .bss                zero     0x2000abe4     0x8  uIP_Task.o [1]
+  .bss                zero     0x2000abec     0x4  httpd-cgi.o [1]
+  .bss                zero     0x2000abf0     0x4  main.o [1]
+  .bss                zero     0x2000abf4     0x4  uip.o [1]
+  .bss                zero     0x2000abf8     0x4  uip.o [1]
+  .bss                zero     0x2000abfc     0x2  main.o [1]
+  .bss                zero     0x2000abfe     0x1  main.o [1]
+  .bss                zero     0x2000abff     0x1  main.o [1]
+  .noinit             uninit   0x2000ac00   0x400  startup_ewarm.o [1]
+                             - 0x2000b000  0xb000
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xa900:
+          0x20000300  0xa900
+
+Copy/packbits (__iar_packbits_init3)
+    1 source range, total size 0x9f (20% of destination):
+          0x00008a64    0x9f
+    1 destination range, total size 0x2f9:
+          0x20000000   0x2f9
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  ro data  rw data
+    ------                 -------  -------  -------
+C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj: [1]
+    IntQueue.o                 492       18      484
+    IntQueueTimer.o             68
+    ParTest.o                   16
+    emac.o                     500             7 484
+    heap_2.o                   216        2   24 024
+    http-strings.o                      488
+    httpd-cgi.o              1 344      258      108
+    httpd-fs.o                 148    7 076       16
+    httpd.o                  1 264
+    list.o                     146
+    main.o                   6 764      299    2 781
+    port.o                     160        1        4
+    portasm.o                  140
+    psock.o                    592
+    queue.o                    972
+    rit128x96x4.o            1 288                28
+    startup_ewarm.o              6      256    1 024
+    tasks.o                  2 068       36      628
+    timer.o                     50
+    timertest.o                180                12
+    uIP_Task.o                 588                 8
+    uip.o                    2 864             8 340
+    uip_arp.o                  792               104
+    ------------------------------------------------
+    Total:                  20 658    8 434   45 045
+
+command line: [2]
+    ------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    abort.o                      6
+    atoi.o                       8
+    errno.o                     12        1        4
+    exit.o                       4
+    low_level_init.o             4
+    snprintf.o                  68
+    sprintf.o                   52
+    strcat.o                    28
+    strncmp.o                   42
+    strrchr.o                   24
+    strstr.o                    44
+    xprintfsmall.o           1 240
+    xsnprout.o                  26
+    xsprout.o                   10
+    xstoul.o                   412
+    xtls.o                       2
+    ------------------------------------------------
+    Total:                   1 982        1        4
+
+driverlib.a: [4]
+    adc.o                      148
+    cpu.o                       20
+    ethernet.o                 228
+    flash.o                     56
+    gpio.o                     412
+    interrupt.o                248       64
+    pwm.o                      152
+    ssi.o                      136
+    sysctl.o                   744      132
+    timer.o                     88
+    uart.o                     188
+    ------------------------------------------------
+    Total:                   2 420      196
+
+grlib.a: [5]
+    ------------------------------------------------
+    Total:
+
+m7M_tl.a: [6]
+    DblAdd.o                   232
+    DblCmpLe.o                  46
+    DblSub.o                   364
+    DblToI32.o                  88
+    I32ToDbl.o                  28
+    ------------------------------------------------
+    Total:                     758
+
+rt7M_tl.a: [7]
+    ABImemclr.o                  6
+    ABImemclr4.o                 6
+    ABImemcpy_unaligned.o      118
+    ABImemset.o                102
+    ABImemset48.o               58
+    XXexit.o                    12
+    cexit.o                     10
+    cmain.o                     26
+    cstartup_M.o                12
+    data_init.o                 40
+    memchr.o                    88
+    memcmp_unaligned.o          98
+    packbits_init.o            208
+    strchr.o                    22
+    strcpy_unaligned.o          68
+    strlen.o                    54
+    strncpy_unaligned.o        108
+    zero_init3.o                34
+    ------------------------------------------------
+    Total:                   1 070
+
+    Gaps                        22        2        7
+    Linker created                       44
+----------------------------------------------------
+    Grand Total:            26 910    8 677   45 056
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address    Size  Type      Object
+-----                      -------    ----  ----      ------
+.iar.init_table$$Base   0x000089d4           --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00008a00           --   Gb  - Linker created -
+?main                   0x00008a01          Code  Gb  cmain.o [7]
+ADCIntClear             0x00004e89     0x8  Code  Gb  adc.o [4]
+ADCIntEnable            0x00004e65    0x10  Code  Gb  adc.o [4]
+ADCIntStatus            0x00004e75    0x12  Code  Gb  adc.o [4]
+ADCProcessorTrigger     0x00004ef1     0x8  Code  Gb  adc.o [4]
+ADCSequenceDataGet      0x00004ed1    0x1e  Code  Gb  adc.o [4]
+ADCSequenceEnable       0x00004e91     0xc  Code  Gb  adc.o [4]
+ADCSequenceStepConfigure
+                        0x00004e9d    0x34  Code  Gb  adc.o [4]
+BTempAck                0x2000025f     0x1  Data  Gb  main.o [1]
+CPUcpsid                0x00005b85          Code  Gb  cpu.o [4]
+CPUcpsie                0x00005b8d          Code  Gb  cpu.o [4]
+CPUwfi                  0x00005b95          Code  Gb  cpu.o [4]
+Clear                   0x2000025e     0x1  Data  Gb  main.o [1]
+CommandManage           0x00001f11    0xee  Code  Gb  main.o [1]
+ComsManage              0x00007921   0x10c  Code  Gb  uIP_Task.o [1]
+Ctype                   0x20000086     0x1  Data  Gb  main.o [1]
+DisplayManage           0x00002001   0x1d6  Code  Gb  main.o [1]
+Distance                0x0000313d    0x94  Code  Gb  main.o [1]
+DownFlag                0x2000abfd     0x1  Data  Gb  main.o [1]
+EthernetConfigSet       0x00008145    0x38  Code  Gb  ethernet.o [4]
+EthernetEnable          0x000081b5    0x28  Code  Gb  ethernet.o [4]
+EthernetInitExpClk      0x00008131    0x14  Code  Gb  ethernet.o [4]
+EthernetIntClear        0x00008211     0x4  Code  Gb  ethernet.o [4]
+EthernetIntDisable      0x000081f5     0xa  Code  Gb  ethernet.o [4]
+EthernetIntEnable       0x000081e9     0xa  Code  Gb  ethernet.o [4]
+EthernetIntStatus       0x00008201     0xe  Code  Gb  ethernet.o [4]
+EthernetMACAddrSet      0x0000817d    0x36  Code  Gb  ethernet.o [4]
+EthernetSpaceAvail      0x000081dd     0xc  Code  Gb  ethernet.o [4]
+FaultISR                0x00005601     0x2  Code  Lc  startup_ewarm.o [1]
+FlashUserGet            0x000080f9    0x2c  Code  Gb  flash.o [4]
+GPIODirModeSet          0x0000468d    0x1e  Code  Gb  gpio.o [4]
+GPIOIntTypeSet          0x000046ad    0x30  Code  Gb  gpio.o [4]
+GPIOPadConfigSet        0x000046f1    0xac  Code  Gb  gpio.o [4]
+GPIOPinIntClear         0x000047a9     0x6  Code  Gb  gpio.o [4]
+GPIOPinIntEnable        0x0000479d     0xc  Code  Gb  gpio.o [4]
+GPIOPinRead             0x000047b1     0x6  Code  Gb  gpio.o [4]
+GPIOPinTypeGPIOInput    0x000047d9    0x10  Code  Gb  gpio.o [4]
+GPIOPinTypeGPIOOutput   0x000047e9    0x10  Code  Gb  gpio.o [4]
+GPIOPinTypePWM          0x000047f9    0x10  Code  Gb  gpio.o [4]
+GPIOPinTypeSSI          0x00004809    0x10  Code  Gb  gpio.o [4]
+GPIOPinTypeUART         0x00004819    0x10  Code  Gb  gpio.o [4]
+GPIOPinWrite            0x000047b9     0x6  Code  Gb  gpio.o [4]
+INTDistance             0x00003125    0x18  Code  Gb  main.o [1]
+ImageCapture            0x00002cc9    0x9e  Code  Gb  main.o [1]
+InStream_Read           0x000087e9    0x22  Code  Lc  packbits_init.o [7]
+InitData                0x000031f1   0x1a0  Code  Gb  main.o [1]
+IntDefaultHandler       0x00005603     0x2  Code  Lc  startup_ewarm.o [1]
+IntDisable              0x000048ed    0x60  Code  Gb  interrupt.o [4]
+IntEnable               0x0000488d    0x60  Code  Gb  interrupt.o [4]
+IntGPIOa                0x00003411    0x20  Code  Gb  main.o [1]
+IntMasterEnable         0x0000485d     0xa  Code  Gb  interrupt.o [4]
+IntPrioritySet          0x00004869    0x20  Code  Gb  interrupt.o [4]
+LoadInt                 0x00005a35    0x4c  Code  Lc  xprintfsmall.o [3]
+Measure                 0x2000abfe     0x1  Data  Gb  main.o [1]
+NmiSR                   0x000055ff     0x2  Code  Lc  startup_ewarm.o [1]
+PWMGenConfigure         0x00004ef9    0x30  Code  Gb  pwm.o [4]
+PWMGenDisable           0x00004f4d     0x6  Code  Gb  pwm.o [4]
+PWMGenEnable            0x00004f41     0xc  Code  Gb  pwm.o [4]
+PWMGenPeriodSet         0x00004f29    0x18  Code  Gb  pwm.o [4]
+PWMOutputState          0x00004f7d    0x14  Code  Gb  pwm.o [4]
+PWMPulseWidthSet        0x00004f55    0x1e  Code  Gb  pwm.o [4]
+Pirate                  0x000030f9    0x24  Code  Gb  main.o [1]
+Pirates                 0x2000abff     0x1  Data  Gb  main.o [1]
+PowerManage             0x0000220d   0x1e8  Code  Gb  main.o [1]
+RIT128x96x4Clear        0x000049c3    0x38  Code  Gb  rit128x96x4.o [1]
+RIT128x96x4Disable      0x00004b05    0x3a  Code  Gb  rit128x96x4.o [1]
+RIT128x96x4Enable       0x00004abb    0x4a  Code  Gb  rit128x96x4.o [1]
+RIT128x96x4Init         0x00004b4d    0x92  Code  Gb  rit128x96x4.o [1]
+RIT128x96x4StringDraw   0x000049fb    0xa6  Code  Gb  rit128x96x4.o [1]
+RITWriteCommand         0x00004955    0x32  Code  Lc  rit128x96x4.o [1]
+RITWriteData            0x00004987    0x32  Code  Lc  rit128x96x4.o [1]
+Region$$Table$$Base     0x000089d4           --   Gb  - Linker created -
+Region$$Table$$Limit    0x00008a00           --   Gb  - Linker created -
+Response                0x200001e4    0x20  Data  Gb  main.o [1]
+SSIConfigSetExpClk      0x00005b99    0x42  Code  Gb  ssi.o [4]
+SSIDataGet              0x00005c01     0xc  Code  Gb  ssi.o [4]
+SSIDataGetNonBlocking   0x00005c0d    0x12  Code  Gb  ssi.o [4]
+SSIDataPut              0x00005bf5     0xa  Code  Gb  ssi.o [4]
+SSIDisable              0x00005be9     0xc  Code  Gb  ssi.o [4]
+SSIEnable               0x00005bdd     0xc  Code  Gb  ssi.o [4]
+Schedule                0x00001cf1   0x1f8  Code  Gb  main.o [1]
+SolarPanel              0x00002689   0x180  Code  Gb  main.o [1]
+StartTimer              0x2000ab4c     0x1  Data  Gb  main.o [1]
+StopTimer               0x2000ab4d     0x1  Data  Gb  main.o [1]
+SysCtlClockGet          0x00004549   0x130  Code  Gb  sysctl.o [4]
+SysCtlClockSet          0x00004439   0x108  Code  Gb  sysctl.o [4]
+SysCtlDelay             0x00004431     0x8  Code  Gb  sysctl.o [4]
+SysCtlLDOSet            0x00004425     0x6  Code  Gb  sysctl.o [4]
+SysCtlPWMClockSet       0x00004679    0x14  Code  Gb  sysctl.o [4]
+SysCtlPeripheralEnable  0x00004401    0x12  Code  Gb  sysctl.o [4]
+SysCtlPeripheralPresent
+                        0x000043a5    0x24  Code  Gb  sysctl.o [4]
+SysCtlPeripheralReset   0x000043c9    0x38  Code  Gb  sysctl.o [4]
+TFLAG                   0x20000083     0x1  Data  Gb  main.o [1]
+ThrustUpKey             0x000033c9    0x44  Code  Gb  main.o [1]
+ThrusterManage          0x00002461   0x15a  Code  Gb  main.o [1]
+Timer0IntHandler        0x00004359    0x32  Code  Gb  timertest.o [1]
+Timer1IntHandler        0x000033a7    0x14  Code  Gb  main.o [1]
+TimerConfigure          0x0000529d    0x24  Code  Gb  timer.o [4]
+TimerEnable             0x00005289     0xe  Code  Gb  timer.o [4]
+TimerIntClear           0x000052dd     0x4  Code  Gb  timer.o [4]
+TimerIntEnable          0x000052d1     0xa  Code  Gb  timer.o [4]
+TimerLoadSet            0x000052c1    0x10  Code  Gb  timer.o [4]
+UARTCharGetNonBlocking  0x00005011    0x10  Code  Gb  uart.o [4]
+UARTCharPutNonBlocking  0x00005021    0x10  Code  Gb  uart.o [4]
+UARTCharsAvail          0x00005001    0x10  Code  Gb  uart.o [4]
+UARTConfigSetExpClk     0x00004f91    0x30  Code  Gb  uart.o [4]
+UARTDisable             0x00004fdd    0x24  Code  Gb  uart.o [4]
+UARTEnable              0x00004fc1    0x1c  Code  Gb  uart.o [4]
+UARTIntClear            0x00005049     0x4  Code  Gb  uart.o [4]
+UARTIntEnable           0x00005031     0xa  Code  Gb  uart.o [4]
+UARTIntHandler          0x00003431    0x50  Code  Gb  main.o [1]
+UARTIntStatus           0x0000503d     0xa  Code  Gb  uart.o [4]
+UpFlag                  0x2000abfc     0x1  Data  Gb  main.o [1]
+VComsManage             0x00002665    0x22  Code  Gb  main.o [1]
+WarningManage           0x0000289d   0x2c0  Code  Gb  main.o [1]
+_LitobSmall             0x00005a81    0xce  Code  Lc  xprintfsmall.o [3]
+_PrintfSmall            0x000056ad   0x382  Code  Gb  xprintfsmall.o [3]
+_PutcharsSmall          0x00005b4f    0x2e  Code  Lc  xprintfsmall.o [3]
+_SNProut                0x0000526f    0x1a  Code  Gb  xsnprout.o [3]
+_SProut                 0x0000544b     0xa  Code  Gb  xsprout.o [3]
+__aeabi_cdcmple         0x00005151          Code  Gb  DblCmpLe.o [6]
+__aeabi_d2iz            0x000051a1          Code  Gb  DblToI32.o [6]
+__aeabi_d2uiz           0x000051cd          Code  Gb  DblToI32.o [6]
+__aeabi_dadd            0x00005069          Code  Gb  DblAdd.o [6]
+__aeabi_errno_addr      0x00006039     0x6  Code  Gb  errno.o [3]
+__aeabi_memclr          0x00008219          Code  Gb  ABImemclr.o [7]
+__aeabi_memclr4         0x00006b79          Code  Gb  ABImemclr4.o [7]
+__aeabi_memset          0x00005f29          Code  Gb  ABImemset.o [7]
+__aeabi_memset4         0x00005671          Code  Gb  ABImemset48.o [7]
+__aeabi_memset8         0x00005671          Code  Gb  ABImemset48.o [7]
+__aeabi_ui2d            0x0000504d          Code  Gb  I32ToDbl.o [6]
+__cmain                 0x00008a01          Code  Gb  cmain.o [7]
+__exit                  0x000088c1          Code  Gb  XXexit.o [7]
+__iar_Errno             0x200002f4     0x4  Data  Gb  errno.o [3]
+__iar_Memchr            0x00005fe1          Code  Gb  memchr.o [7]
+__iar_Memset            0x00005f29          Code  Gb  ABImemset.o [7]
+__iar_Memset4_word      0x00005679          Code  Gb  ABImemset48.o [7]
+__iar_Memset8_word      0x00005679          Code  Gb  ABImemset48.o [7]
+__iar_Memset_word       0x00005f31          Code  Gb  ABImemset.o [7]
+__iar_Stoul             0x00005d69     0x4  Code  Gb  xstoul.o [3]
+__iar_Stoulx            0x00005c21   0x142  Code  Gb  xstoul.o [3]
+__iar_Strchr            0x00005f91          Code  Gb  strchr.o [7]
+__iar_Strrchr           0x00007895    0x18  Code  Gb  strrchr.o [3]
+__iar_Strstr            0x0000821f    0x2c  Code  Gb  strstr.o [3]
+__iar_d2uiz             0x000051d9          Code  Gb  DblToI32.o [6]
+__iar_dadd              0x0000507d          Code  Gb  DblAdd.o [6]
+__iar_data_init3        0x000089ad    0x28  Code  Gb  data_init.o [7]
+__iar_dlib_perthread_access
+                        0x00006045     0x2  Code  Gb  xtls.o [3]
+__iar_dsub              0x00005dbd          Code  Gb  DblSub.o [6]
+__iar_dsubStart         0x00005dcf          Code  Gb  DblSub.o [6]
+__iar_packbits_init3    0x0000880b    0xae  Code  Gb  packbits_init.o [7]
+__iar_program_start     0x00008a59          Code  Gb  cstartup_M.o [7]
+__iar_ui2d              0x00005051          Code  Gb  I32ToDbl.o [6]
+__iar_unaligned___aeabi_memcpy
+                        0x000051f9          Code  Gb  ABImemcpy_unaligned.o [7]
+__iar_unaligned___aeabi_memcpy4
+                        0x00005219          Code  Gb  ABImemcpy_unaligned.o [7]
+__iar_unaligned___aeabi_memcpy8
+                        0x00005219          Code  Gb  ABImemcpy_unaligned.o [7]
+__iar_unaligned_memcmp  0x0000559d          Code  Gb  memcmp_unaligned.o [7]
+__iar_unaligned_strcpy  0x000078d9          Code  Gb  strcpy_unaligned.o [7]
+__iar_unaligned_strncpy
+                        0x00005605          Code  Gb  strncpy_unaligned.o [7]
+__iar_zero_init3        0x0000517f    0x22  Code  Gb  zero_init3.o [7]
+__low_level_init        0x00008a1b     0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000   0x100  Data  Gb  startup_ewarm.o [1]
+_call_main              0x00008a0d          Code  Gb  cmain.o [7]
+_exit                   0x00008a25          Code  Gb  cexit.o [7]
+_main                   0x00008a17          Code  Gb  cmain.o [7]
+abort                   0x000088b9     0x6  Code  Gb  abort.o [3]
+arp_table               0x2000a94c    0x60  Data  Lc  uip_arp.o [1]
+arptime                 0x2000a945     0x1  Data  Lc  uip_arp.o [1]
+atoi                    0x00004e5d     0x8  Code  Gb  atoi.o [3]
+battOverTemp            0x20000161     0x1  Data  Gb  main.o [1]
+battTemp                0x20000090     0x2  Data  Gb  main.o [1]
+battTempBuffer          0x2000aa70    0x40  Data  Gb  main.o [1]
+battTempPtr             0x20000078     0x4  Data  Gb  main.o [1]
+batteryBuffer           0x2000a9f0    0x40  Data  Gb  main.o [1]
+batteryLevel            0x20000088     0x2  Data  Gb  main.o [1]
+batteryLevelPtr         0x20000068     0x4  Data  Gb  main.o [1]
+batteryLow              0x20000080     0x1  Data  Gb  main.o [1]
+broadcast_ethaddr       0x000080f0     0x8  Data  Lc  uip_arp.o [1]
+buf_setup               0x00007071     0x6  Code  Lc  psock.o [1]
+c                       0x2000a8e4     0x1  Data  Lc  uip.o [1]
+cCountBuf               0x2000ab7c    0x20  Data  Lc  httpd-cgi.o [1]
+calls                   0x200002b4    0x20  Data  Lc  httpd-cgi.o [1]
+chav                    0x2000abe4     0x4  Data  Gb  uIP_Task.o [1]
+chksum                  0x0000609b    0x38  Code  Lc  uip.o [1]
+clock_time              0x0000791d     0x4  Code  Gb  uIP_Task.o [1]
+closed                  0x000086b0     0x8  Data  Lc  httpd-cgi.o [1]
+closing                 0x000086f4     0x8  Data  Lc  httpd-cgi.o [1]
+commHandle              0x20000204     0x4  Data  Gb  main.o [1]
+command                 0x000086a8     0x8  Data  Lc  httpd-cgi.o [1]
+command                 0x20000084     0x1  Data  Gb  main.o [1]
+command_in              0x00007471    0x22  Code  Lc  httpd-cgi.o [1]
+communic                0x000086a0     0x8  Data  Lc  httpd-cgi.o [1]
+communic_out            0x00007417    0x22  Code  Lc  httpd-cgi.o [1]
+count                   0x2000abb0    0x10  Data  Lc  httpd-fs.o [1]
+data_404_html           0x00000100    0xb4  Data  Lc  httpd-fs.o [1]
+data_acked              0x000070ad    0x40  Code  Lc  psock.o [1]
+data_command_shtml      0x000001b4   0x324  Data  Lc  httpd-fs.o [1]
+data_display_shtml      0x000004d8   0x504  Data  Lc  httpd-fs.o [1]
+data_index_html         0x000009dc   0x34c  Data  Lc  httpd-fs.o [1]
+data_index_shtml        0x00000d28   0x34c  Data  Lc  httpd-fs.o [1]
+data_io_shtml           0x00001074   0x33c  Data  Lc  httpd-fs.o [1]
+data_stats_shtml        0x000013b0   0x574  Data  Lc  httpd-fs.o [1]
+data_tcp_shtml          0x00001924   0x2e0  Data  Lc  httpd-fs.o [1]
+delay                   0x000034e9    0x28  Code  Gb  main.o [1]
+digits                  0x00005d6c    0x28  Data  Lc  xstoul.o [3]
+distFLAG                0x2000ab4e     0x1  Data  Gb  main.o [1]
+distance                0x2000009c     0x4  Data  Gb  main.o [1]
+driveMotorSpeedDec      0x20000082     0x1  Data  Gb  main.o [1]
+driveMotorSpeedInc      0x20000081     0x1  Data  Gb  main.o [1]
+established             0x000086d0     0xc  Data  Lc  httpd-cgi.o [1]
+exit                    0x00008a1f     0x4  Code  Gb  exit.o [3]
+file                    0x00008678     0x8  Data  Lc  httpd-cgi.o [1]
+file_404_html           0x00001c90    0x14  Data  Gb  httpd-fs.o [1]
+file_command_shtml      0x00001c7c    0x14  Data  Gb  httpd-fs.o [1]
+file_display_shtml      0x00001c68    0x14  Data  Gb  httpd-fs.o [1]
+file_index_html         0x00001c54    0x14  Data  Gb  httpd-fs.o [1]
+file_index_shtml        0x00001c40    0x14  Data  Gb  httpd-fs.o [1]
+file_io_shtml           0x00001c2c    0x14  Data  Gb  httpd-fs.o [1]
+file_stats              0x0000739b    0x2a  Code  Lc  httpd-cgi.o [1]
+file_stats_shtml        0x00001c18    0x14  Data  Gb  httpd-fs.o [1]
+file_tcp_shtml          0x00001c04    0x14  Data  Gb  httpd-fs.o [1]
+fin_wait_1              0x000086dc     0xc  Data  Lc  httpd-cgi.o [1]
+fin_wait_2              0x000086e8     0xc  Data  Lc  httpd-cgi.o [1]
+finishCapture           0x2000abcc     0x1  Data  Gb  main.o [1]
+fuelLevel               0x2000008a     0x2  Data  Gb  main.o [1]
+fuelLow                 0x2000007f     0x1  Data  Gb  main.o [1]
+g_bSSIEnabled           0x2000ab9c     0x1  Data  Lc  rit128x96x4.o [1]
+g_pucBuffer             0x2000abd4     0x8  Data  Lc  rit128x96x4.o [1]
+g_pucFont               0x00004c24   0x1e0  Data  Lc  rit128x96x4.o [1]
+g_pucRIT128x96x4HorizontalInc
+                        0x00004c20     0x2  Data  Lc  rit128x96x4.o [1]
+g_pucRIT128x96x4Init    0x00004e04    0x50  Data  Lc  rit128x96x4.o [1]
+g_pucRIT128x96x4VerticalInc
+                        0x00004c1c     0x2  Data  Lc  rit128x96x4.o [1]
+g_pulDCRegs             0x00008a30    0x10  Data  Lc  sysctl.o [4]
+g_pulRCGCRegs           0x00008a4c     0xc  Data  Lc  sysctl.o [4]
+g_pulRegs               0x0000896c    0x40  Data  Lc  interrupt.o [4]
+g_pulSRCRRegs           0x00008a40     0xc  Data  Lc  sysctl.o [4]
+g_pulXtals              0x000088cc    0x5c  Data  Lc  sysctl.o [4]
+g_ulFlags               0x2000025c     0x1  Data  Gb  main.o [1]
+g_ulGPIOb               0x200001dc     0x4  Data  Gb  main.o [1]
+gen_command_in          0x00007439    0x38  Code  Lc  httpd-cgi.o [1]
+gen_communic_out        0x000073c5    0x52  Code  Lc  httpd-cgi.o [1]
+generate_file_stats     0x0000738b    0x10  Code  Lc  httpd-cgi.o [1]
+generate_io_state       0x00007643    0x2e  Code  Lc  httpd-cgi.o [1]
+generate_net_stats      0x0000758b    0x14  Code  Lc  httpd-cgi.o [1]
+generate_part_of_file   0x00006b81    0x2e  Code  Lc  httpd.o [1]
+generate_rtos_stats     0x000075eb    0x28  Code  Lc  httpd-cgi.o [1]
+generate_tcp_stats      0x00007493    0x9e  Code  Lc  httpd-cgi.o [1]
+globalCounter           0x200001d8     0x4  Data  Gb  main.o [1]
+handle_connection       0x00006f8b    0x1a  Code  Lc  httpd.o [1]
+handle_input            0x00006ebb    0xc8  Code  Lc  httpd.o [1]
+handle_output           0x00006df9    0xc2  Code  Lc  httpd.o [1]
+handle_script           0x00006bed   0x104  Code  Lc  httpd.o [1]
+htons                   0x00006b45     0xa  Code  Gb  uip.o [1]
+http_404_html           0x0000844c     0xc  Data  Gb  http-strings.o [1]
+http_content_type_binary
+                        0x000085c4    0x2c  Data  Gb  http-strings.o [1]
+http_content_type_css   0x00008550    0x1c  Data  Gb  http-strings.o [1]
+http_content_type_gif   0x00008588    0x1c  Data  Gb  http-strings.o [1]
+http_content_type_html  0x00008534    0x1c  Data  Gb  http-strings.o [1]
+http_content_type_jpg   0x000085a4    0x20  Data  Gb  http-strings.o [1]
+http_content_type_plain
+                        0x00008514    0x20  Data  Gb  http-strings.o [1]
+http_content_type_png   0x0000856c    0x1c  Data  Gb  http-strings.o [1]
+http_css                0x00008600     0x8  Data  Gb  http-strings.o [1]
+http_get                0x00008438     0x8  Data  Gb  http-strings.o [1]
+http_gif                0x00008610     0x8  Data  Gb  http-strings.o [1]
+http_header_200         0x00008464    0x54  Data  Gb  http-strings.o [1]
+http_header_404         0x000084b8    0x5c  Data  Gb  http-strings.o [1]
+http_html               0x000085f0     0x8  Data  Gb  http-strings.o [1]
+http_index_html         0x00008440     0xc  Data  Gb  http-strings.o [1]
+http_jpg                0x00008618     0x8  Data  Gb  http-strings.o [1]
+http_png                0x00008608     0x8  Data  Gb  http-strings.o [1]
+http_referer            0x00008458     0xc  Data  Gb  http-strings.o [1]
+http_shtml              0x000085f8     0x8  Data  Gb  http-strings.o [1]
+httpd_appcall           0x00006fa5    0x68  Code  Gb  httpd.o [1]
+httpd_cgi               0x0000735d    0x2e  Code  Gb  httpd-cgi.o [1]
+httpd_fs_count          0x00007321    0x2a  Code  Gb  httpd-fs.o [1]
+httpd_fs_open           0x000072e5    0x3c  Code  Gb  httpd-fs.o [1]
+httpd_fs_strcmp         0x000072c1    0x24  Code  Lc  httpd-fs.o [1]
+httpd_init              0x00007069     0x8  Code  Gb  httpd.o [1]
+i                       0x2000a944     0x1  Data  Lc  uip_arp.o [1]
+imageBuffer             0x2000a1bc   0x400  Data  Gb  main.o [1]
+imageDataPending        0x20000074     0x4  Data  Gb  main.o [1]
+imageDataPtr            0x20000070     0x4  Data  Gb  main.o [1]
+imageDataRawPtr         0x2000006c     0x4  Data  Gb  main.o [1]
+io                      0x00008698     0x8  Data  Lc  httpd-cgi.o [1]
+ipaddr                  0x2000a948     0x4  Data  Lc  uip_arp.o [1]
+ipid                    0x2000a8e8     0x2  Data  Lc  uip.o [1]
+iss                     0x2000a8dc     0x4  Data  Lc  uip.o [1]
+keypadManage            0x00002811    0x32  Code  Gb  main.o [1]
+lRefreshCount           0x2000ab78     0x4  Data  Gb  httpd-cgi.o [1]
+last_ack                0x00008708     0xc  Data  Lc  httpd-cgi.o [1]
+lastport                0x2000a8ea     0x2  Data  Lc  uip.o [1]
+led_io                  0x00007675    0x28  Code  Lc  httpd-cgi.o [1]
+main                    0x00001ca5    0x40  Code  Gb  main.o [1]
+measureINT              0x00003395    0x12  Code  Gb  main.o [1]
+memchr                  0x00005fe1          Code  Gb  memchr.o [7]
+mode                    0x2000025d     0x1  Data  Gb  main.o [1]
+myCommand               0x20000164    0x1c  Data  Gb  main.o [1]
+myComs                  0x2000a9ac    0x44  Data  Gb  main.o [1]
+myDisplay               0x20000034    0x34  Data  Gb  main.o [1]
+myImage                 0x200001a8    0x10  Data  Gb  main.o [1]
+myKeypad                0x200001d0     0x8  Data  Gb  main.o [1]
+myPower                 0x20000000    0x34  Data  Gb  main.o [1]
+mySolarPanel            0x20000180    0x14  Data  Gb  main.o [1]
+myThruster              0x200001b8     0xc  Data  Gb  main.o [1]
+myVehComs               0x200001c4     0xc  Data  Gb  main.o [1]
+myWarning               0x20000194    0x14  Data  Gb  main.o [1]
+ndigs                   0x00005d94    0x28  Data  Lc  xstoul.o [3]
+net                     0x00008688     0x8  Data  Lc  httpd-cgi.o [1]
+net_stats               0x000075ab    0x32  Code  Lc  httpd-cgi.o [1]
+nullfunction            0x00007355     0x8  Code  Lc  httpd-cgi.o [1]
+optfft                  0x00002d75   0x11a  Code  Gb  main.o [1]
+payload                 0x200000a0    0x14  Data  Gb  main.o [1]
+pcStatus                0x2000abec     0x4  Data  Gb  httpd-cgi.o [1]
+pcStatusString          0x2000aaec    0x34  Data  Lc  tasks.o [1]
+pcText                  0x2000abe8     0x4  Data  Gb  uIP_Task.o [1]
+pcTraceBuffer           0x2000012c     0x4  Data  Lc  tasks.o [1]
+pcTraceBufferEnd        0x20000130     0x4  Data  Lc  tasks.o [1]
+peakFreq                0x20000094     0x2  Data  Gb  main.o [1]
+pendingBuffer           0x2000aa30    0x40  Data  Gb  main.o [1]
+powerConsumption        0x2000008c     0x2  Data  Gb  main.o [1]
+powerGeneration         0x2000008e     0x2  Data  Gb  main.o [1]
+prvAddCurrentTaskToDelayedList
+                        0x00004129    0x32  Code  Lc  tasks.o [1]
+prvAllocateTCBAndStack  0x0000415b    0x36  Code  Lc  tasks.o [1]
+prvCopyDataFromQueue    0x00003a47    0x26  Code  Lc  queue.o [1]
+prvCopyDataToQueue      0x000039eb    0x5c  Code  Lc  queue.o [1]
+prvENET_Send            0x00007a2d    0x16  Code  Lc  uIP_Task.o [1]
+prvIdleTask             0x000040a1    0x4a  Code  Lc  tasks.o [1]
+prvInitialiseTCBVariables
+                        0x000040eb    0x3e  Code  Lc  tasks.o [1]
+prvListTaskWithinSingleList
+                        0x00004191    0x62  Code  Lc  tasks.o [1]
+prvQueueAccessLogError  0x00008287     0xc  Code  Lc  IntQueue.o [1]
+prvRecordValue_NormallyEmpty
+                        0x00008269    0x1e  Code  Lc  IntQueue.o [1]
+prvRecordValue_NormallyFull
+                        0x0000824d    0x1c  Code  Lc  IntQueue.o [1]
+prvSetMACAddress        0x00007a43    0x70  Code  Lc  uIP_Task.o [1]
+prvSetupHardware        0x00002e91   0x22e  Code  Lc  main.o [1]
+prvUnlockQueue          0x00003a6d    0x60  Code  Lc  queue.o [1]
+psock_datalen           0x0000719b     0xa  Code  Gb  psock.o [1]
+psock_generator_send    0x00007131    0x62  Code  Gb  psock.o [1]
+psock_init              0x0000729d    0x22  Code  Gb  psock.o [1]
+psock_newdata           0x000071a5    0x24  Code  Gb  psock.o [1]
+psock_readto            0x000071c9    0xae  Code  Gb  psock.o [1]
+psock_send              0x000070ed    0x44  Code  Gb  psock.o [1]
+pulStack                0x2000ac00   0x400  Data  Lc  startup_ewarm.o [1]
+pvPortMalloc            0x000052e1    0x9e  Code  Gb  heap_2.o [1]
+pxCurrentTCB            0x200000dc     0x4  Data  Gb  tasks.o [1]
+pxDelayedTaskList       0x200000e0     0x4  Data  Lc  tasks.o [1]
+pxOverflowDelayedTaskList
+                        0x200000e4     0x4  Data  Lc  tasks.o [1]
+pxPortInitialiseStack   0x00005455    0x1a  Code  Gb  port.o [1]
+pxReadyTasksLists       0x2000a5bc   0x190  Data  Lc  tasks.o [1]
+rawDataBuffer           0x20009dbc   0x400  Data  Gb  main.o [1]
+response                0x20000085     0x1  Data  Gb  main.o [1]
+rtos                    0x00008690     0x8  Data  Lc  httpd-cgi.o [1]
+rtos_stats              0x0000761b    0x28  Code  Lc  httpd-cgi.o [1]
+secondTemp              0x20000092     0x2  Data  Gb  main.o [1]
+send_data               0x00007077    0x36  Code  Lc  psock.o [1]
+send_file               0x00006baf    0x3e  Code  Lc  httpd.o [1]
+send_headers            0x00006cf1    0xf6  Code  Lc  httpd.o [1]
+snprintf                0x00007b65    0x44  Code  Gb  snprintf.o [3]
+solarPanelDeploy        0x2000007d     0x1  Data  Gb  main.o [1]
+solarPanelRetract       0x2000007e     0x1  Data  Gb  main.o [1]
+solarPanelState         0x2000007c     0x1  Data  Gb  main.o [1]
+sprintf                 0x00004829    0x34  Code  Gb  sprintf.o [3]
+startCapture            0x20000160     0x1  Data  Gb  main.o [1]
+states                  0x20000290    0x24  Data  Lc  httpd-cgi.o [1]
+strcat                  0x00005581    0x1c  Code  Gb  strcat.o [3]
+strchr                  0x00005f91          Code  Gb  strchr.o [7]
+strlen                  0x00005fa9          Code  Gb  strlen.o [7]
+strncmp                 0x000078ad    0x2a  Code  Gb  strncmp.o [3]
+strstr                  0x00008215     0x4  Code  Gb  uIP_Task.o [1]
+syn_rcvd                0x000086b8     0xc  Data  Lc  httpd-cgi.o [1]
+syn_sent                0x000086c4     0xc  Data  Lc  httpd-cgi.o [1]
+tcp                     0x00008680     0x8  Data  Lc  httpd-cgi.o [1]
+tcp_stats               0x00007539    0x42  Code  Lc  httpd-cgi.o [1]
+thrusterCommand         0x20000098     0x4  Data  Gb  main.o [1]
+time_wait               0x000086fc     0xc  Data  Lc  httpd-cgi.o [1]
+timer_expired           0x00007bd3    0x18  Code  Gb  timer.o [1]
+timer_reset             0x00007bc1     0xa  Code  Gb  timer.o [1]
+timer_set               0x00007bb9     0x8  Code  Gb  timer.o [1]
+ucNormallyEmptyReceivedValues
+                        0x2000a74c    0xc8  Data  Lc  IntQueue.o [1]
+ucNormallyFullReceivedValues
+                        0x2000a814    0xc8  Data  Lc  IntQueue.o [1]
+uiGetEMACRxData         0x00007c93    0x2c  Code  Gb  emac.o [1]
+uip_acc32               0x2000a8e0     0x4  Data  Gb  uip.o [1]
+uip_add32               0x00006049    0x52  Code  Gb  uip.o [1]
+uip_add_rcv_nxt         0x0000618b    0x2a  Code  Lc  uip.o [1]
+uip_appdata             0x2000aae8     0x4  Data  Gb  uip.o [1]
+uip_arp_arpin           0x00007f03    0xb8  Code  Gb  uip_arp.o [1]
+uip_arp_ipin            0x00007ec7    0x3c  Code  Gb  uip_arp.o [1]
+uip_arp_out             0x00007fbb   0x108  Code  Gb  uip_arp.o [1]
+uip_arp_timer           0x00007de1    0x3e  Code  Gb  uip_arp.o [1]
+uip_arp_update          0x00007e1f    0x9a  Code  Lc  uip_arp.o [1]
+uip_buf                 0x2000ab28     0x4  Data  Gb  emac.o [1]
+uip_conn                0x2000a940     0x4  Data  Gb  uip.o [1]
+uip_conns               0x200060cc  0x1fe0  Data  Gb  uip.o [1]
+uip_draddr              0x2000abf4     0x4  Data  Gb  uip.o [1]
+uip_ethaddr             0x2000abdc     0x8  Data  Gb  uip.o [1]
+uip_flags               0x2000aadc     0x1  Data  Gb  uip.o [1]
+uip_hostaddr            0x2000aae0     0x4  Data  Gb  uip.o [1]
+uip_init                0x00006137    0x30  Code  Gb  uip.o [1]
+uip_ipchksum            0x000060d3    0x26  Code  Gb  uip.o [1]
+uip_len                 0x2000aae4     0x2  Data  Gb  uip.o [1]
+uip_listen              0x00006167    0x24  Code  Gb  uip.o [1]
+uip_listenports         0x2000a8ec    0x50  Data  Gb  uip.o [1]
+uip_netmask             0x2000abf8     0x4  Data  Gb  uip.o [1]
+uip_process             0x000061b5   0x92e  Code  Gb  uip.o [1]
+uip_sappdata            0x2000a93c     0x4  Data  Gb  uip.o [1]
+uip_send                0x00006b4f    0x1a  Code  Gb  uip.o [1]
+uip_slen                0x2000a8e6     0x2  Data  Gb  uip.o [1]
+uip_stat                0x2000aab0    0x2c  Data  Gb  uip.o [1]
+ulGPIOBase              0x2000aba4     0x4  Data  Gb  rit128x96x4.o [1]
+ulGPIOId                0x2000aba0     0x4  Data  Gb  rit128x96x4.o [1]
+ulMaxJitter             0x2000abc0     0x4  Data  Gb  timertest.o [1]
+ulNextTxSpace           0x2000ab40     0x4  Data  Lc  emac.o [1]
+ulOLEDDC_PIN            0x2000aba8     0x4  Data  Gb  rit128x96x4.o [1]
+ulOLEDEN_PIN            0x2000abac     0x4  Data  Gb  rit128x96x4.o [1]
+ulRxLength              0x2000ab2c    0x14  Data  Lc  emac.o [1]
+upper_layer_chksum      0x000060f9    0x3e  Code  Lc  uip.o [1]
+usTaskCheckFreeStackSpace
+                        0x000041ff    0x14  Code  Lc  tasks.o [1]
+uxCriticalNesting       0x200002ec     0x4  Data  Lc  port.o [1]
+uxCurrentNumberOfTasks  0x20000100     0x4  Data  Lc  tasks.o [1]
+uxHighPriorityLoops1    0x20000210     0x4  Data  Lc  IntQueue.o [1]
+uxHighPriorityLoops2    0x20000214     0x4  Data  Lc  IntQueue.o [1]
+uxLowPriorityLoops1     0x20000218     0x4  Data  Lc  IntQueue.o [1]
+uxLowPriorityLoops2     0x2000021c     0x4  Data  Lc  IntQueue.o [1]
+uxMissedTicks           0x20000118     0x4  Data  Lc  tasks.o [1]
+uxParTestGetLED         0x00007ba9     0x8  Code  Gb  ParTest.o [1]
+uxPreviousTask          0x200002f0     0x4  Data  Lc  tasks.o [1]
+uxRxBuffers             0x200080ac  0x1d10  Data  Lc  emac.o [1]
+uxSchedulerSuspended    0x20000114     0x4  Data  Lc  tasks.o [1]
+uxTaskGetStackHighWaterMark
+                        0x00004213     0xa  Code  Gb  tasks.o [1]
+uxTaskNumber            0x20000124     0x4  Data  Lc  tasks.o [1]
+uxTasksDeleted          0x200000e8     0x4  Data  Lc  tasks.o [1]
+uxTopReadyPriority      0x2000010c     0x4  Data  Lc  tasks.o [1]
+uxTopUsedPriority       0x20000108     0x4  Data  Lc  tasks.o [1]
+uxValueForNormallyEmptyQueue
+                        0x2000022c     0x4  Data  Gb  IntQueue.o [1]
+uxValueForNormallyFullQueue
+                        0x20000230     0x4  Data  Gb  IntQueue.o [1]
+vApplicationProcessFormInput
+                        0x00007ab3    0x6a  Code  Gb  uIP_Task.o [1]
+vApplicationStackOverflowHook
+                        0x00002e8f     0x2  Code  Gb  main.o [1]
+vApplicationTickHook    0x000031d1    0x14  Code  Gb  main.o [1]
+vEMAC_ISR               0x00007d09    0x3e  Code  Gb  emac.o [1]
+vIncrementTxLength      0x00007cc7     0xa  Code  Gb  emac.o [1]
+vInitEMAC               0x00007bed    0xa6  Code  Gb  emac.o [1]
+vInitialiseSend         0x00007cbf     0x8  Code  Gb  emac.o [1]
+vListInitialise         0x000053b9    0x1a  Code  Gb  list.o [1]
+vListInitialiseItem     0x000053d3     0x6  Code  Gb  list.o [1]
+vListInsert             0x000053f5    0x32  Code  Gb  list.o [1]
+vListInsertEnd          0x000053d9    0x1c  Code  Gb  list.o [1]
+vListRemove             0x00005427    0x24  Code  Gb  list.o [1]
+vMACHandleTask          0x00007d49    0x82  Code  Gb  emac.o [1]
+vOLEDTask               0x000025bd    0x88  Code  Lc  main.o [1]
+vPortClearInterruptMask
+                        0x0000553f          Code  Gb  portasm.o [1]
+vPortEnterCritical      0x000054a7    0x10  Code  Gb  port.o [1]
+vPortExitCritical       0x000054b7    0x10  Code  Gb  port.o [1]
+vPortFree               0x0000537f    0x32  Code  Gb  heap_2.o [1]
+vPortSVCHandler         0x0000554d          Code  Gb  portasm.o [1]
+vPortSetInterruptMask   0x00005531          Code  Gb  portasm.o [1]
+vPortStartFirstTask     0x00005569          Code  Gb  portasm.o [1]
+vPortYieldFromISR       0x0000549d     0xa  Code  Gb  port.o [1]
+vSendBufferToMAC        0x00007cd1    0x38  Code  Gb  emac.o [1]
+vSetMSP                 0x000054f5          Code  Gb  portasm.o [1]
+vSetupHighFrequencyTimer
+                        0x000042f1    0x68  Code  Gb  timertest.o [1]
+vT2InterruptHandler     0x00008929    0x1c  Code  Gb  IntQueueTimer.o [1]
+vT3InterruptHandler     0x00008945    0x1c  Code  Gb  IntQueueTimer.o [1]
+vTaskDelay              0x00003be3    0x2e  Code  Gb  tasks.o [1]
+vTaskIncrementTick      0x00003e63    0xa4  Code  Gb  tasks.o [1]
+vTaskList               0x00003de5    0x70  Code  Gb  tasks.o [1]
+vTaskMissedYield        0x00004093     0x8  Code  Gb  tasks.o [1]
+vTaskPlaceOnEventList   0x00003fbd    0x36  Code  Gb  tasks.o [1]
+vTaskPriorityDisinherit
+                        0x00004275    0x3c  Code  Gb  tasks.o [1]
+vTaskPriorityInherit    0x00004223    0x52  Code  Gb  tasks.o [1]
+vTaskResume             0x00003c9d    0x44  Code  Gb  tasks.o [1]
+vTaskSetTimeOutState    0x0000403f     0xc  Code  Gb  tasks.o [1]
+vTaskStartScheduler     0x00003cf7    0x40  Code  Gb  tasks.o [1]
+vTaskSuspend            0x00003c11    0x54  Code  Gb  tasks.o [1]
+vTaskSuspendAll         0x00003d37     0xc  Code  Gb  tasks.o [1]
+vTaskSwitchContext      0x00003f07    0xaa  Code  Gb  tasks.o [1]
+xDelayedTaskList1       0x20000138    0x14  Data  Lc  tasks.o [1]
+xDelayedTaskList2       0x2000014c    0x14  Data  Lc  tasks.o [1]
+xEMACSemaphore          0x2000ab20     0x4  Data  Gb  emac.o [1]
+xEnd                    0x20000300     0x8  Data  Lc  heap_2.o [1]
+xErrorLine              0x20000224     0x4  Data  Lc  IntQueue.o [1]
+xErrorStatus            0x20000220     0x4  Data  Lc  IntQueue.o [1]
+xFirstTimerHandler      0x00008295    0x78  Code  Gb  IntQueue.o [1]
+xFreeBytesRemaining     0x200002dc     0x4  Data  Lc  heap_2.o [1]
+xHeap                   0x20000308  0x5dc0  Data  Lc  heap_2.o [1]
+xHighPriorityNormallyEmptyTask1
+                        0x20000234     0x4  Data  Gb  IntQueue.o [1]
+xHighPriorityNormallyEmptyTask2
+                        0x20000238     0x4  Data  Gb  IntQueue.o [1]
+xHighPriorityNormallyFullTask1
+                        0x2000023c     0x4  Data  Gb  IntQueue.o [1]
+xHighPriorityNormallyFullTask2
+                        0x20000240     0x4  Data  Gb  IntQueue.o [1]
+xMACInterruptSemaphore  0x2000ab24     0x4  Data  Gb  emac.o [1]
+xMissedYield            0x2000011c     0x4  Data  Lc  tasks.o [1]
+xNextTaskUnblockTime    0x20000128     0x4  Data  Lc  tasks.o [1]
+xNormallyEmptyQueue     0x20000208     0x4  Data  Lc  IntQueue.o [1]
+xNormallyFullQueue      0x2000020c     0x4  Data  Lc  IntQueue.o [1]
+xNumOfOverflows         0x20000120     0x4  Data  Lc  tasks.o [1]
+xOLEDQueue              0x2000026c     0x4  Data  Gb  main.o [1]
+xPendingReadyList       0x200000b4    0x14  Data  Lc  tasks.o [1]
+xPortPendSVHandler      0x000054fb          Code  Gb  portasm.o [1]
+xPortStartScheduler     0x0000546f    0x2e  Code  Gb  port.o [1]
+xPortSysTickHandler     0x000054c7    0x1a  Code  Gb  port.o [1]
+xQueueCreate            0x00003711    0x5a  Code  Gb  queue.o [1]
+xQueueGenericReceive    0x00003895    0xf8  Code  Gb  queue.o [1]
+xQueueGenericSend       0x0000377b    0xcc  Code  Gb  queue.o [1]
+xQueueGenericSendFromISR
+                        0x00003847    0x4e  Code  Gb  queue.o [1]
+xQueueIsQueueFullFromISR
+                        0x00003acd    0x10  Code  Gb  queue.o [1]
+xQueueReceiveFromISR    0x0000399f    0x4c  Code  Gb  queue.o [1]
+xSchedulerRunning       0x20000110     0x4  Data  Lc  tasks.o [1]
+xSecondTimerHandler     0x0000830d    0xd0  Code  Gb  IntQueue.o [1]
+xStart                  0x200002d4     0x8  Data  Lc  heap_2.o [1]
+xSuspendedTaskList      0x200000ec    0x14  Data  Lc  tasks.o [1]
+xTaskCheckForTimeOut    0x0000404b    0x48  Code  Gb  tasks.o [1]
+xTaskGenericCreate      0x00003add   0x106  Code  Gb  tasks.o [1]
+xTaskGetCurrentTaskHandle
+                        0x0000421d     0x6  Code  Gb  tasks.o [1]
+xTaskGetTickCount       0x00003dd1     0xc  Code  Gb  tasks.o [1]
+xTaskIsTaskSuspended    0x00003c7d    0x20  Code  Gb  tasks.o [1]
+xTaskRemoveFromEventList
+                        0x00003ff3    0x3c  Code  Gb  tasks.o [1]
+xTaskResumeAll          0x00003d43    0x8e  Code  Gb  tasks.o [1]
+xTasksWaitingTermination
+                        0x200000c8    0x14  Data  Lc  tasks.o [1]
+xTickCount              0x20000104     0x4  Data  Lc  tasks.o [1]
+xTracing                0x20000134     0x4  Data  Lc  tasks.o [1]
+xWasSuspended           0x20000228     0x4  Data  Lc  IntQueue.o [1]
+
+
+[1] = C:\Users\jbhogal\Downloads\RTOSPROJECTTHOMAS\Demo\Tasks3\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = driverlib.a
+[5] = grlib.a
+[6] = m7M_tl.a
+[7] = rt7M_tl.a
+
+  26 910 bytes of readonly  code memory
+   8 677 bytes of readonly  data memory
+  45 056 bytes of readwrite data memory
+
+Errors: none
+Warnings: 1
