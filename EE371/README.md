@@ -14,6 +14,8 @@ Environment Requirements:
 <br>
 <strong>Software:</strong> Quartus for the Verilog part of this project, NIOS II SBT For Eclipse for the C part of this project.
 </p>
+<br>
+<strong>CODES:</strong>
 <p>
 For Verilog code, please see file InUW/EE371/suix/AsynComms/AsynComms.v , for C code, please see folder InUW/EE371/suix/AsynComms/software/
 </p>
