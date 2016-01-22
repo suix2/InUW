@@ -5,8 +5,9 @@ This folder contains code of final project in EE 472 (microcomputer system), 15S
 <p>
 To run the code, please put directory RTOSPROJECTTHOMAS to C drive or download unzip RTOSPROJECT.zip file to C drive, and import the project to IAR Embedded Workbench.
 </p>
+<br>
 <p>
-Most codes in InUW/EE472/RTOSPROJECTTHOMAS/Demo/Tasks3/ and InUW/EE472/RTOSPROJECTTHOMAS/Demo/Tasks3/webserver/
+All codes in C. Most codes in InUW/EE472/RTOSPROJECTTHOMAS/Demo/Tasks3/ and InUW/EE472/RTOSPROJECTTHOMAS/Demo/Tasks3/webserver/.
 </P>
 <br>
 <p>
