@@ -7,5 +7,9 @@ Please run in Linux using gcc
 </p>
 <br>
 <p>
+C files are guaranteed working. Some files created purely according to lab spec may not executable or make sense.
+</p>
+<br>
+<p>
 For more detailed information, please contact suix2@uw.edu
 </p>
