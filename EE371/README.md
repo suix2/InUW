@@ -7,5 +7,9 @@ To run the code, please put directory suix to C drive or download unzip suix.7z 
 </p>
 <br>
 <p>
+For Verilog code, please see file InUW/EE371/suix/AsynComms/AsynComms.v , for C code, please see folder InUW/EE371/suix/AsynComms/software.
+</p>
+<br>
+<p>
 For more detailed information, please contact suix2@uw.edu
 </p>
