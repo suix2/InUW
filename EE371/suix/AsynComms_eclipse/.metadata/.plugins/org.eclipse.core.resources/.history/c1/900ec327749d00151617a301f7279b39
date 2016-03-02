@@ -1,0 +1,103 @@
+/*
+ * shuffle.c
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ * shuffles the cards
+ * Inputs: NONE
+ * Return: void
+ */
+int shuffle(){
+	int i;
+	int card;
+	unsigned int addr;
+	int opcode;
+	initSRAM();
+	while(!isCurrentPlayer()){
+		recvchar(&opcode);
+		usleep(50);
+		alt_printf("opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 3:
+				deleteRecv();
+				break;
+		case 4:
+				getCardNum();
+				break;
+		}
+	}
+	alt_printf("Out of while 1\n");
+	for(i=0; i<17; i++){
+		incCardNum();
+		alt_printf("CHNP0:   %x\n", sramread(CHNP));
+		alt_printf("CHNP1:   %x\n", sramread(CHNP+1));
+		alt_printf("CHNP2:   %x\n", sramread(CHNP+2));
+		addr=getCard(i);
+		// 0-12 normal, 13 if 52, 14 if 53
+		card=sramread(addr);
+		cch[i]=card%13+(card>51)+(card>52);
+		printf("addr: %d\n", addr);
+		usleep(50);
+		deleteSRAM(addr);
+		syncDeleteSRAM(addr);
+	}
+	usleep(250);
+	syncCardNum();
+	nextPlayer();
+	usleep(250);
+	incPCS();
+	while(PCS!=1){
+		alt_printf("current player: %x\n", PCS);
+		recvchar(&opcode);
+		usleep(50);
+		alt_printf("second opcode: %x\n", opcode);
+		switch(opcode){
+		case 1:
+				nextPlayer();
+				break;
+		case 3:
+				deleteRecv();
+				break;
+		case 4:
+				getCardNum();
+				break;
+		}
+	}
+	alt_printf("current player2: %x\n", PCS);
+	sort(17, cch);
+	return 0;
+}
+
+/**
+ * gets card value, used for shuffle
+ * Inputs:
+ * 		index: index of cch
+ * Return card value
+ */
+int getCard(int index){
+	return rand()%(54-17*(myNum-1)-index);
+}
+
+/**
+ * initializes SRAM
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int initSRAM(){
+	int i;
+	for(i=0; i<54; i++){
+		sramwrite(i, i);
+	}
+	sramwrite(54, 0);
+	sramwrite(55, 0);
+	sramwrite(56, 0);
+	return 0;
+}

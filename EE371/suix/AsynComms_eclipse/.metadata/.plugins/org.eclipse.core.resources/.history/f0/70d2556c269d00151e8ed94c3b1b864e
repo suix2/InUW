@@ -1,0 +1,125 @@
+/*
+ * playControl.c
+ *
+ *  Created on: Dec 2, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ * Delete value at addr in SRAM
+ * Different cases are implemented
+ * CHANGE CARD NUMBER BEFORE CALLING
+ * CHANGE CARD NUMBER BEFORE CALLING
+ * CHANGE CARD NUMBER BEFORE CALLING
+ * Inputs:
+ * 		addr: addr in SRAM where value need to be deleted
+ * Return: 0 if success
+ */
+int deleteSRAM(unsigned char addr){
+	if(addr<CHNP && addr>CFSP){
+		swap(addr, CHNP-read(CHNP+myNum-1));
+	}
+	else
+		return -1;
+	return 0;
+}
+
+/**
+ * synchronizes deleteSRAM operation
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int syncDeleteSRAM(unsigned char addr){
+	sendchar(3|0x40);
+	usleep(250);
+	sendchar(addr|0x40);
+	return 0;
+}
+
+/**
+ * wait for synchronization of deleteSRAM
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int deleteRecv(){
+	char addr;
+	recvchar(&addr);
+	deleteSRAM(addr);
+	return 0;
+}
+
+/**
+ * increase card number by 1
+ * Inputs: NONE
+ * Return: current number of cards
+ */
+int incCardNum(){
+	char addr=CHNP+myNum-1;
+	int cardnum=read(addr);
+	write(addr, cardnum+1);
+	return cardnum;
+}
+
+/**
+ * decrease card number by 1
+ * Inputs: NONE
+ * Return: current number of cards
+ */
+int decCardNum(){
+	char addr=CHNP+myNum-1;
+	int cardnum=read(addr);
+	write(addr, cardnum-1);
+	return cardnum;
+}
+
+/**
+ * synchronizes card number
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int syncCardNum(){
+	char cn[3];
+	cn[0]=read(CHNP)|0x40;
+	cn[1]=read(CHNP+1)|0x40;
+	cn[2]=read(CHNP+2)|0x40;
+	sendchar(4|0x40);
+	usleep(250);
+	sendstr(3, cn);
+	return 0;
+}
+
+/**
+ * wait for synchronization of syncCardNum
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int getCardNum(){
+	char cn[3];
+	recvstr(3, cn);
+	write(CHNP, cn[0]);
+	write(CHNP+1, cn[1]);
+	write(CHNP+2, cn[2]);
+	return 0;
+}
+
+/**
+ * sort cards
+ * Inputs:
+ * 		cn: number of cards
+ * 		ap: array pointer
+ * Return: 0 if success
+ */
+int sort(char cn, char* ap){
+	int i, j;
+	char temp;
+	for(i=0; i<cn; i++)
+		for(j=i; j<cn; j++)
+			if(ap[i]>ap[j]){
+				temp=ap[i];
+				ap[i]=ap[j];
+				ap[j]=temp;
+			}
+	return 0;
+}

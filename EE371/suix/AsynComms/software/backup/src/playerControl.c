@@ -1,0 +1,121 @@
+/*
+ * isCurrentPlayer.c
+ *
+ *  Created on: Dec 1, 2015
+ *      Author: suix2
+ */
+
+#include "comsheader.h"
+
+/**
+ * Decide of I am current player
+ * Inputs: NONE
+ * Return: Boolean
+ */
+Boolean isCurrentPlayer(){
+	return myNum==PCS&0x3; //mask:0011
+}
+
+/**
+ * Change player 1-2 2-3 3-1
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int nextPlayer(){
+	PCS=(PCS+1)%4+(PCS==3);
+	//PCS=(PCS+1)%3+(PCS==2);
+	return 0;
+}
+
+/**
+ * Tell other boards to change player
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int incPCS(){
+	sendchar(1|0x40);
+	usleep(250);
+	return 0;
+}
+
+/**
+ * Tell other boards to change player
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int resetPCS(){
+	sendchar(2|0x40);
+	return 0;
+}
+
+/**
+ * Wait for command of changing player
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int waitNextPlayer(){
+	char buf=0;
+	while(buf != 1)
+		recvchar(&buf);
+	return 0;
+}
+
+/**
+ * set multiplier to 1
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int setmul1(){
+	sendchar(5|0x40);
+	return 0;
+}
+
+/**
+ * set multiplier to 2
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int setmul2(){
+	sendchar(6|0x40);
+	return 0;
+}
+
+/**
+ * set multiplier to 3
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int setmul3(){
+	sendchar(7|0x40);
+	return 0;
+}
+
+/**
+ * tell other boards to change PCS to 0101
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int PCS0101(){
+	sendchar(8|0x40);
+	return 0;
+}
+
+/**
+ * Tell other boards to change PCS to 1010
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int PCS1010(){
+	sendchar(9|0x40);
+	return 0;
+}
+
+/**
+ * Tell other boards to change PCS to 1111
+ * Inputs: NONE
+ * Return: 0 if success
+ */
+int PCS1111(){
+	sendchar(10|0x40);
+	return 0;
+}

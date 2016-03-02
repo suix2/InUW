@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="AsynComms">
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_ic_data_module:niosmp_nios2_processor_ic_data|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_spj1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_register_bank_b_module:niosmp_nios2_processor_register_bank_b|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_jcn1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_ic_tag_module:niosmp_nios2_processor_ic_tag|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_vao1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_nios2_oci:the_niosmp_nios2_processor_nios2_oci|niosmp_nios2_processor_nios2_ocimem:the_niosmp_nios2_processor_nios2_ocimem|niosmp_nios2_processor_ociram_sp_ram_module:niosmp_nios2_processor_ociram_sp_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_smf1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_bht_module:niosmp_nios2_processor_bht|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_iun1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_dc_tag_module:niosmp_nios2_processor_dc_tag|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_2jn1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_dc_victim_module:niosmp_nios2_processor_dc_victim|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_baj1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_mult_cell:the_niosmp_nios2_processor_mult_cell|altera_mult_add:the_altmult_add_part_1" CBX_FILE_NAME="altera_mult_add_ujt2.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_jtag_uart:jtag_uart|niosmp_jtag_uart_scfifo_w:the_niosmp_jtag_uart_scfifo_w|scfifo:wfifo" CBX_FILE_NAME="scfifo_3291.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_dc_data_module:niosmp_nios2_processor_dc_data|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_40j1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_register_bank_a_module:niosmp_nios2_processor_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_icn1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_nios2_processor:nios2_processor|niosmp_nios2_processor_mult_cell:the_niosmp_nios2_processor_mult_cell|altera_mult_add:the_altmult_add_part_2" CBX_FILE_NAME="altera_mult_add_0kt2.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_onchip_memory:onchip_memory|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_d3j1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|AsynComms|niosmp:u0|niosmp_jtag_uart:jtag_uart|niosmp_jtag_uart_scfifo_r:the_niosmp_jtag_uart_scfifo_r|scfifo:rfifo" CBX_FILE_NAME="scfifo_3291.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

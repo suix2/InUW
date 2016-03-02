@@ -1,0 +1,156 @@
+/*
+ * "Hello World" example.
+ *
+ * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
+ * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
+ * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
+ * device in your system's hardware.
+ * The memory footprint of this hosted application is ~69 kbytes by default
+ * using the standard reference design.
+ *
+ * For a reduced footprint version of this template, and an explanation of how
+ * to reduce the memory footprint for a given application, see the
+ * "small_hello_world" template.
+ *
+ */
+
+//#define TEST_1
+#define HANGMAN
+
+#ifdef HANGMAN
+
+#include "comsheader.h"
+
+//#define TEST_1
+
+// HW addrs
+#define load (volatile char *) 0x00081010
+#define sent (volatile char *) 0x00081020
+#define asoe (volatile char *) 0x00081030
+#define mpdataout (volatile char *) 0x00081040
+#define chrec (volatile char *) 0x00081050
+#define mpdatain (volatile char *) 0x00081060
+#define noe (volatile char *) 0x00081070
+#define rnw (volatile char *) 0x00081080
+#define address (volatile char *) 0x00081090
+//data in/out of SRAM
+#define data (volatile char *) 0x000810a0
+#define led (volatile char *) 0x000810b0
+
+int sendchar(int buf);
+int recvchar(int* buf);
+char addparity(char c);
+
+typedef enum{FALSE, TRUE} Boolean;
+
+int hangman()
+{
+#ifdef TEST_1
+	char buf=0x55;
+	int rec, j, k;
+	for(k=0; k<100; k++)
+	for(j=0; j<128; j++){
+		sendchar(4|0x40);
+		usleep(100);
+		sendchar(j|0x40);
+		usleep(100);
+		sendchar(1|0x40);
+		usleep(100);
+		sendchar(1|0x40);
+		usleep(100);
+//		recvchar(&rec);
+//		printf("rec=%x\n", rec);
+	}
+	while(1);
+#endif
+
+	char ch[127];
+	Boolean chb[127];
+	Boolean hit=FALSE;
+	int guess;
+	int res;
+	int length;
+	int time;
+	int myNum;
+	int i=0, j;
+	int cont=1;
+	printf("Please tell me if you want to question(0) or play(1)\n");
+	scanf("%d", &myNum);
+	if(myNum==0){
+		printf("Please tell me the length of your word\n");
+		scanf("%d", &length);
+		sendchar(length);
+		for(j=0; j<length; j++)
+			chb[j]=FALSE;
+		printf("Please tell me what is you word\n");
+		scanf("%s", ch);
+		for(j=0; j<length; j++)
+			sendchar(ch[j]);
+		printf("How many chance do you want to give to the player?\n");
+		while(time<length){
+			printf("time should be longer or equal to the length of the word");
+			scanf("%d", &time);
+		}
+		sendchar(time);
+		recvchar(&res);
+		if(!res){
+			printf("You Lose!");
+		}
+		else{
+			printf("You Win!");
+		}
+	}
+	else{
+		recvchar(&length);
+		printf("length is: %d\n", length);
+		for(j=0; j<length; j++)
+			recvchar(ch+j);
+		for(j=0; j<length; j++)
+			chb[j]=FALSE;
+		recvchar(&time);
+		printf("time is: %d\n", time);
+		while(cont>0){
+			printf("The Word Now Looks Like: ");
+			for(j=0; j<length; j++){
+				if(!chb[j])
+					printf("_ ");
+				else
+					printf("%c ", ch[j]);
+			}
+			printf("\nPlease tell me the next letter you guess\n");
+			scanf(" %c", &guess);
+			printf("the letter you guessed is: %c\n", guess);
+			for(j=0; j<length; j++){
+				if(ch[j]==guess && !chb[j]){
+					i++;
+					chb[j]=!chb[j];
+					hit=TRUE;
+				}
+			}
+			if(hit){
+				hit=FALSE;
+				printf("Hit!\n");
+			}
+			else{
+				time--;
+				printf("Nope...Times Remaining: %d\n", time);
+			}
+			if(i==length){
+				printf("You Win!\nThe Word Is: ");
+				sendchar(0);
+				for(j=0; j<length; j++)
+					printf("%c ", ch[j]);
+				cont=0;
+			}
+			else if(time<0){
+				printf("You Lose!\nThe Word Is: ");
+				sendchar(1);
+				for(j=0; j<length; j++)
+					printf("%c ", ch[j]);
+				cont=0;
+			}
+		}
+	}
+	while(1);
+	return 0;
+}
