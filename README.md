@@ -1,9 +1,11 @@
 # InUW
 This folder includes codes I wrote in UW classes.
 <p>
-<Strong>EE472</Strong>: Satellite Mining System.
+<Strong>SatelliteMining/EE472</Strong>: Satellite Mining System.
 <br>
-<Strong>EE371</Strong>: Fight The Landlord (A Chinese Tranditional Card Game).
+<Strong>FightTheLandlordEE371</Strong>: Fight The Landlord (A Chinese Tranditional Card Game).
+<br>
+<Strong>ProductLineMeasure</Strong>: Product line measurement system
 <br>
 <Strong>CSE351</Strong>: Labs with various topics.
 <br>
