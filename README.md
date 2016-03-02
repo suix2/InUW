@@ -3,7 +3,7 @@ This folder includes codes I wrote in UW classes.
 <p>
 <Strong>SatelliteMining/EE472</Strong>: Satellite Mining System.
 <br>
-<Strong>FightTheLandlordEE371</Strong>: Fight The Landlord (A Chinese Tranditional Card Game).
+<Strong>FightTheLandlord/EE371</Strong>: Fight The Landlord (A Chinese Tranditional Card Game).
 <br>
 <Strong>ProductLineMeasure</Strong>: Product line measurement system
 <br>
